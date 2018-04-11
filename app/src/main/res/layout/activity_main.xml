@@ -9,12 +9,15 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_blue_gradient"
+        >
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="0dp"
             android:layout_height="56dp"
+            android:background="#ffffff"
             android:elevation="4dp"
             android:theme="@style/ActionBarStyle"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -40,85 +43,34 @@
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="230dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
                 android:layout_gravity="start"
                 android:layout_marginEnd="9dp"
                 android:layout_marginTop="57dp"
-                android:background="@color/colorPrimaryDark"
+                android:background="@drawable/bg_drawer_gradient"
                 android:fillViewport="false"
                 android:orientation="vertical"
                 android:padding="9dp">
 
 
-        <LinearLayout
-            android:id="@+id/categoriesLayout"
-            android:layout_width="240dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            >
-
-        <ImageView
-            android:id="@+id/headerImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="left"
-            android:layout_marginStart="45dp"
-            />
-
-
-        <LinearLayout
-            android:id="@+id/clockLayout"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:padding="3dp"
-            >
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/clockLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:padding="6dp"
-                android:text="Clock"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold"
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/logoImage"
+                android:src="@drawable/logo"
+
                 />
 
-            <LinearLayout
-                android:id="@+id/alarmsLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:orientation="horizontal"
+        </android.support.constraint.ConstraintLayout>
 
-                >
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:padding="3dp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:padding="6dp"
-                    android:text="Alarms"
-                    android:textColor="@color/textColorSecondary"
-                    android:textSize="16sp"
-                    />
-
-            </LinearLayout>
-
-        </LinearLayout>
-        </LinearLayout>
     </ScrollView>
 
 </android.support.v4.widget.DrawerLayout>
