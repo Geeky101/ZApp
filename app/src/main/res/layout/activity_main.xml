@@ -2,8 +2,6 @@
     android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -18,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            android:theme="@style/ActionBarStyle"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,12 +27,12 @@
             android:id="@+id/bgGradient"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/colorPrimary"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
-
 
     </android.support.constraint.ConstraintLayout>
 
@@ -47,11 +45,80 @@
                 android:layout_gravity="start"
                 android:layout_marginEnd="9dp"
                 android:layout_marginTop="57dp"
+                android:background="@color/colorPrimaryDark"
                 android:fillViewport="false"
                 android:orientation="vertical"
                 android:padding="9dp">
 
 
+        <LinearLayout
+            android:id="@+id/categoriesLayout"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            >
+
+        <ImageView
+            android:id="@+id/headerImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="left"
+            android:layout_marginStart="45dp"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/clockLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="3dp"
+            >
+
+            <TextView
+                android:id="@+id/clockLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:padding="6dp"
+                android:text="Clock"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:id="@+id/alarmsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal"
+
+                >
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="3dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:padding="6dp"
+                    android:text="Alarms"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="16sp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 </android.support.v4.widget.DrawerLayout>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ZApp</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">closed</string>
+    <string name="settings">setttings</string>
+    <string name="about">about</string>
 </resources>
