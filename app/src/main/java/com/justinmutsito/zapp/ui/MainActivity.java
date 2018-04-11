@@ -1,5 +1,6 @@
 package com.justinmutsito.zapp.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,11 +12,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.justinmutsito.zapp.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +28,18 @@ public class MainActivity extends AppCompatActivity {
     ImageView mBgGradient;
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
+    @BindView(R.id.logoImage)
+    ImageView mLogoImage;
+    @BindView(R.id.eventsLayout)
+    LinearLayout mEventsLayout;
+    @BindView(R.id.mediaLayout)
+    LinearLayout mMediaLayout;
+    @BindView(R.id.groupsLayout)
+    LinearLayout mGroupsLayout;
+    @BindView(R.id.paymentsLayout)
+    LinearLayout mPaymentsLayout;
+    @BindView(R.id.infoLayout)
+    LinearLayout mInfoLayout;
     private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
@@ -88,4 +103,28 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @OnClick(R.id.eventsLayout)
+    public void onEventsLayoutClicked() {
+        startActivity(new Intent(MainActivity.this,EventsActivity.class));
+    }
+
+    @OnClick(R.id.mediaLayout)
+    public void onMediaLayoutClicked() {
+        startActivity(new Intent(MainActivity.this,MediaActivity.class));
+    }
+
+    @OnClick(R.id.groupsLayout)
+    public void onGroupsLayoutClicked() {
+        startActivity(new Intent(MainActivity.this,GroupsActivity.class));
+    }
+
+    @OnClick(R.id.paymentsLayout)
+    public void onPaymentsLayoutClicked() {
+        startActivity(new Intent(MainActivity.this,PaymentsActivity.class));
+    }
+
+    @OnClick(R.id.infoLayout)
+    public void onInfoLayoutClicked() {
+        startActivity(new Intent(MainActivity.this,InfoActivity.class));
+    }
 }

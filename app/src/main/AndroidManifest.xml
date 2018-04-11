@@ -26,6 +26,16 @@
         </activity>
         <activity android:name=".ui.AboutActivity">
         </activity>
+        <activity android:name=".ui.EventsActivity">
+        </activity>
+        <activity android:name=".ui.MediaActivity">
+        </activity>
+        <activity android:name=".ui.GroupsActivity">
+        </activity>
+        <activity android:name=".ui.PaymentsActivity">
+        </activity>
+        <activity android:name=".ui.InfoActivity">
+        </activity>
     </application>
 
 </manifest>

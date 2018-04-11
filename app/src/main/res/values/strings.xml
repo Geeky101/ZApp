@@ -4,4 +4,9 @@
     <string name="drawer_close">closed</string>
     <string name="settings">setttings</string>
     <string name="about">about</string>
+    <string name="upcoming_events">Upcoming Events</string>
+    <string name="media">Media</string>
+    <string name="groups">Groups</string>
+    <string name="payments">Payments</string>
+    <string name="info">About</string>
 </resources>
