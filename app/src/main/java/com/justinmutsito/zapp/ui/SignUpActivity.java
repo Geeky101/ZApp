@@ -1,6 +1,5 @@
 package com.justinmutsito.zapp.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
@@ -43,10 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     @OnClick(R.id.backIcon)
     public void onBackIconClicked() {
-        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        onBackPressed();
     }
 
     @OnClick(R.id.signUpLayout)
@@ -57,11 +53,9 @@ public class SignUpActivity extends AppCompatActivity {
         String password = mPasswordField.getText().toString();
 
 
-        if (name.equals("") || surname.equals("") || email.equals("") || password.equals("")){
+        if (name.equals("") || surname.equals("") || email.equals("") || password.equals("")) {
             //Treat sign up error
-        }
-
-        else{
+        } else {
             // create new user
         }
 
