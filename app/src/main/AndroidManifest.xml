@@ -30,9 +30,6 @@
             android:name=".ui.AboutActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.signup"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".ui.EventsActivity"
             android:screenOrientation="portrait"
             />
