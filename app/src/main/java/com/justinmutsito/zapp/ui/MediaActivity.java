@@ -7,12 +7,16 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.justinmutsito.zapp.R;
+import com.justinmutsito.zapp.adapters.VideoListAdapter;
+import com.justinmutsito.zapp.util.YoutubeVideo;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MediaActivity extends AppCompatActivity {
+public class MediaActivity extends AppCompatActivity implements VideoListAdapter.VideoCallback {
 
     @BindView(R.id.videosIcon)
     ImageView mVideosIcon;
@@ -24,6 +28,10 @@ public class MediaActivity extends AppCompatActivity {
     ImageView mImagesIcon;
     @BindView(R.id.container)
     ConstraintLayout mContainer;
+
+
+    private VideoListAdapter mVideoListAdapter;
+    private ArrayList<YoutubeVideo> mYoutubeVideosList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,9 @@ public class MediaActivity extends AppCompatActivity {
 
 
 
+        mYoutubeVideosList = getYoutubeVideos();
+        mVideoListAdapter = new VideoListAdapter(mYoutubeVideosList);
+        mVideoListAdapter.setVideoCallback(this);
         onVideosIconClicked();
     }
 
@@ -47,6 +58,7 @@ public class MediaActivity extends AppCompatActivity {
     public void onVideosIconClicked() {
         resetIcons();
         mVideosIcon.setImageResource(R.drawable.ic_library_video_red);
+
 
 
 
@@ -79,6 +91,18 @@ public class MediaActivity extends AppCompatActivity {
         mTvIcon.setImageResource(R.drawable.ic_live_tv_white);
         mMusicIcon.setImageResource(R.drawable.ic_library_music_white);
         mImagesIcon.setImageResource(R.drawable.ic_photo_library_white);
+    }
+
+    @Override
+    public void playVideo(int pos) {
+
+    }
+
+
+    private ArrayList<YoutubeVideo> getYoutubeVideos(){
+        ArrayList<YoutubeVideo> videos = new ArrayList<>();
+
+        return videos;
     }
 
 }

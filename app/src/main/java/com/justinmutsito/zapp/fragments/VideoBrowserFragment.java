@@ -9,19 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.justinmutsito.zapp.R;
-import com.justinmutsito.zapp.util.Video;
+import com.justinmutsito.zapp.util.YoutubeVideo;
 
 import java.util.ArrayList;
 
 public class VideoBrowserFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-    private ArrayList<Video> mAllVideos;
+    private ArrayList<YoutubeVideo> mAllVideos;
 
     public VideoBrowserFragment() {
         // Required empty public constructor
     }
 
+    public void setVideos(ArrayList<YoutubeVideo> videos){
+        mAllVideos = videos;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

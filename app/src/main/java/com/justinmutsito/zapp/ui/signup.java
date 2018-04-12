@@ -1,7 +1,9 @@
-package com.justinmutsito.zapp;
+package com.justinmutsito.zapp.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.justinmutsito.zapp.R;
 
 public class signup extends AppCompatActivity {
 

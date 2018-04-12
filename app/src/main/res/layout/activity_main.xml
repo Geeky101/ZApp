@@ -98,7 +98,7 @@
 
 "
                     android:padding="3dp"
-                    android:text="@string/upcoming_events"
+                    android:text="Upcoming Events"
                     android:textColor="@color/textColorPrimary"
                     android:textSize="18sp"
                     />
@@ -129,7 +129,7 @@
 
 "
                     android:padding="3dp"
-                    android:text="@string/media"
+                    android:text="Media"
                     android:textColor="@color/textColorPrimary"
                     android:textSize="18sp"
                     />
@@ -157,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="3dp"
-                    android:text="@string/groups"
+                    android:text="Groups"
                     android:textColor="@color/textColorPrimary"
                     android:textSize="18sp"
                     />
@@ -185,7 +185,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="3dp"
-                    android:text="@string/payments"
+                    android:text="Payments"
                     android:textColor="@color/textColorPrimary"
                     android:textSize="18sp"
 
@@ -215,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="3dp"
-                    android:text="@string/info"
+                    android:text="About"
                     android:textColor="@color/textColorPrimary"
                     android:textSize="18sp"
 
