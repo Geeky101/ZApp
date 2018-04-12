@@ -12,11 +12,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="@string/sign_in_logonID"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="55dp" />
+        tools:layout_editor_absoluteY="194dp" />
 
     <EditText
         android:id="@+id/txtPassword"
@@ -24,32 +23,46 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
+        android:text="@string/sign_in_password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="149dp" />
+        tools:layout_editor_absoluteY="260dp" />
 
     <Button
         android:id="@+id/btnForgotPass"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="214dp" />
+        android:layout_height="30dp"
+        android:background="@color/transparent"
+        android:text="@string/sign_in_forgot"
+        android:textAlignment="center"
+        android:textColor="@color/button_link_color"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="306dp"
+        tools:textAllCaps="?android:attr/windowSwipeToDismiss" />
 
     <Button
         android:id="@+id/btnSignIn"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="303dp" />
+        android:background="@color/button_bg_color"
+        android:text="@string/sign_in_button_text"
+        android:textColor="@color/button_text_color"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="394dp" />
 
     <Button
         android:id="@+id/btnPolicy"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="390dp" />
+        android:layout_height="27dp"
+        android:background="@color/transparent"
+        android:text="@string/sign_in_policy"
+        android:textAllCaps="false"
+        android:textColor="@color/button_link_color"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="442dp" />
 </android.support.constraint.ConstraintLayout>
