@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#073b96</color>
+    <color name="colorPrimary">#1c3731</color>
     <color name="colorPrimaryDark">#1c3da0</color>
     <color name="colorAccent">#aa0000</color>
-    <color name="textColorPrimary">#ffffff</color>
-    <color name="textColorSecondary">#252525</color>
+    <color name="textColorPrimary">#000</color>
+    <color name="textColorSecondary">#00252525</color>
 
+    <color name="background_color">#e1e1e1</color>
+    <color name="background_accent_color">#000000</color>
+    <color name="button_text_color">#fffefe</color>
+
+    <!--sign in color scheme-->
+    <color name="sign_bg_color">#e1e1e1</color>
+    <color name="transparent">#00fffefe</color>
+    <color name="button_bg_color">#ff0000</color>
+    <color name="button_link_color">#083d42</color>
 </resources>
