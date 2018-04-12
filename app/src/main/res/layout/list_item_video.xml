@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/colorAccent"
+    >
+
+
+
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_thumbnail"
+        android:layout_alignParentStart="true"
+
+
+        />
+
+    <TextView
+        android:id="@+id/titleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/thumbnail"
+        android:padding="1dp"
+        android:layout_margin="1dp"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        tools:text="Like a champion"/>
+
+
+<bu
+
+
+
+</RelativeLayout>

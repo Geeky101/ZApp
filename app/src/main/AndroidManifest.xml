@@ -20,21 +20,42 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LoginActivity">
+        <activity
+            android:name=".ui.LoginActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.SettingsActivity">
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.AboutActivity">
+        <activity
+            android:name=".ui.AboutActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.EventsActivity">
+        <activity
+            android:name=".ui.EventsActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.MediaActivity">
+        <activity
+            android:name=".ui.MediaActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.GroupsActivity">
+        <activity
+            android:name=".ui.GroupsActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.PaymentsActivity">
+        <activity
+            android:name=".ui.PaymentsActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.InfoActivity">
+        <activity
+            android:name=".ui.InfoActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.VideoStreamerActivity"
+            android:label="@string/title_activity_video_streamer"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 
