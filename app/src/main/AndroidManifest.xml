@@ -43,6 +43,11 @@
         <activity
             android:name=".ui.InfoActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.SignUpActivity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>
