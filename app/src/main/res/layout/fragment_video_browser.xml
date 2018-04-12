@@ -5,7 +5,10 @@
              android:layout_height="match_parent"
              tools:context=".fragments.VideoBrowserFragment">
 
+<<<<<<< HEAD
     <!-- TODO: Update blank fragment layout -->
 
 
+=======
+>>>>>>> 537dbc20bf4e81cd8b87d25549cc9399f0c8a05c
 </FrameLayout>
