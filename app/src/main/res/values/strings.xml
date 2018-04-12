@@ -16,6 +16,7 @@
     <string name="sign_up_password1">enter password here</string>
     <string name="sign_up_password2">retype your password</string>
     <string name="sign_up_button_text">Create Account</string>
+    <string name="sign_up_account_exist">Already have an account</string>
 
     <!--sign in strings-->
     <string name="sign_in_button_text">Sign In</string>
