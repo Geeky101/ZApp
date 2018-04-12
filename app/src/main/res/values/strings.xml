@@ -4,4 +4,18 @@
     <string name="drawer_close">closed</string>
     <string name="settings">setttings</string>
     <string name="about">about</string>
+
+    <!--sign up strings-->
+    <string name="sign_up_email">enter email here</string>
+    <string name="sign_up_name">enter your name here</string>
+    <string name="sign_up_password1">enter password here</string>
+    <string name="sign_up_password2">retype your password</string>
+    <string name="sign_up_button_text">Create Account</string>
+
+    <!--sign in strings-->
+    <string name="sign_in_button_text">Sign In</string>
+    <string name="sign_in_forgot">Forgot Password</string>
+    <string name="sign_in_password">Password</string>
+    <string name="sign_in_logonID">Logon ID/ Email</string>
+    <string name="sign_in_policy">Privacy Policy</string>
 </resources>
