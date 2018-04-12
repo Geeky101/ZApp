@@ -24,11 +24,5 @@
     <string name="sign_in_password">Password</string>
     <string name="sign_in_logonID">Logon ID/ Email</string>
     <string name="sign_in_policy">Privacy Policy</string>
-<<<<<<< HEAD
     <string name="play">Play</string>
-=======
-
-    <!--payment info strings-->
-    <string name="payInfo_content_desc">Background style of toolbar</string>
->>>>>>> 537dbc20bf4e81cd8b87d25549cc9399f0c8a05c
 </resources>
