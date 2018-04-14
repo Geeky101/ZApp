@@ -1,58 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
+    android:id="@+id/container"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MediaActivity"
     android:background="@drawable/bg_blue_gradient"
-    android:id="@+id/container"
+    tools:context=".ui.MediaActivity"
     >
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:padding="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/navLayout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/fragmentContainer"
+
+        />
+
+
+    <LinearLayout
+        android:id="@+id/navLayout"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         >
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
             android:id="@+id/videosIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight=".25"
             android:src="@drawable/ic_library_video_white"
-            android:layout_weight=".25"
-            android:layout_gravity="center"
             />
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
             android:id="@+id/tvIcon"
-            android:src="@drawable/ic_live_tv_white"
-            android:layout_weight=".25"
-            android:layout_gravity="center"
-            />
-        <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/musicIcon"
-            android:src="@drawable/ic_library_music_white"
-            android:layout_weight=".25"
             android:layout_gravity="center"
+            android:layout_weight=".25"
+            android:src="@drawable/ic_live_tv_white"
             />
 
         <ImageView
+            android:id="@+id/musicIcon"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/imagesIcon"
-            android:src="@drawable/ic_photo_library_white"
-            android:layout_weight=".25"
             android:layout_gravity="center"
+            android:layout_weight=".25"
+            android:src="@drawable/ic_library_music_white"
+            />
+
+        <ImageView
+            android:id="@+id/imagesIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight=".25"
+            android:src="@drawable/ic_photo_library_white"
             />
 
     </LinearLayout>
