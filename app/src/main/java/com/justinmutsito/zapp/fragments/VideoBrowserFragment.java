@@ -1,6 +1,7 @@
 package com.justinmutsito.zapp.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.justinmutsito.zapp.R;
 import com.justinmutsito.zapp.adapters.VideoListAdapter;
+import com.justinmutsito.zapp.ui.VideoStreamerActivity;
 import com.justinmutsito.zapp.util.YoutubeVideo;
 
 import java.util.ArrayList;
@@ -81,8 +83,12 @@ public class VideoBrowserFragment extends Fragment implements VideoListAdapter.V
 
     @Override
     public void playVideo(int pos) {
-
-
+        Intent intent = new Intent(getActivity(), VideoStreamerActivity.class);
+        Bundle bundle = new Bundle();
+        String id = mAllVideos.get(pos).getId();
+        bundle.putString("id", id);
+        intent.putExtra("bundle", bundle);
+        startActivity(intent);
     }
 
     @Override

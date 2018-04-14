@@ -52,9 +52,11 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.SignUpActivity"
-            android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme">
         </activity>
+        <activity android:name=".ui.VideoStreamerActivity"
+                  android:screenOrientation="landscape"
+            />
     </application>
 
 </manifest>
