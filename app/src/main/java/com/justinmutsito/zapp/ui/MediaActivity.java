@@ -11,8 +11,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.justinmutsito.zapp.R;
+import com.justinmutsito.zapp.fragments.AudioBrowserFragment;
 import com.justinmutsito.zapp.fragments.VideoBrowserFragment;
 import com.justinmutsito.zapp.keys.Keys;
+import com.justinmutsito.zapp.util.AudioFile;
 import com.justinmutsito.zapp.util.YoutubeSearch;
 import com.justinmutsito.zapp.util.YoutubeVideo;
 
@@ -32,7 +34,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MediaActivity extends AppCompatActivity implements VideoBrowserFragment.OnFragmentInteractionListener {
+public class MediaActivity extends AppCompatActivity implements VideoBrowserFragment.OnFragmentInteractionListener, AudioBrowserFragment.MusicBrowserCallback {
 
     @BindView(R.id.videosIcon)
     ImageView mVideosIcon;
@@ -47,7 +49,9 @@ public class MediaActivity extends AppCompatActivity implements VideoBrowserFrag
 
 
     private ArrayList<YoutubeVideo> mYoutubeVideosList;
+    private ArrayList<AudioFile> mAudioFiles;
     private VideoBrowserFragment mVideoBrowserFragment;
+    private AudioBrowserFragment mAudioBrowserFragment;
 
 
     @Override
@@ -65,7 +69,9 @@ public class MediaActivity extends AppCompatActivity implements VideoBrowserFrag
 
 
         mYoutubeVideosList = new ArrayList<>();
+        mAudioFiles = new ArrayList<>();
         mVideoBrowserFragment = new VideoBrowserFragment();
+        mAudioBrowserFragment = new AudioBrowserFragment();
         onVideosIconClicked();
     }
 
@@ -123,6 +129,43 @@ public class MediaActivity extends AppCompatActivity implements VideoBrowserFrag
             }
 
         }
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private class AudioSearchTask extends AsyncTask<String, Void, ArrayList<AudioFile>> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Toast.makeText(MediaActivity.this, "Started audio", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected ArrayList<AudioFile> doInBackground(String... strings) {
+            ArrayList<AudioFile> results = getAudioFiles();
+            return results;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<AudioFile> audioFiles) {
+            if (!audioFiles.isEmpty()) {
+                mAudioFiles = audioFiles;
+                mAudioBrowserFragment.setAllAudioFiles(mAudioFiles);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, mAudioBrowserFragment).commit();
+                Toast.makeText(MediaActivity.this, "Done", Toast.LENGTH_SHORT).show();
+
+            } else {
+                //Todo : Data retrieval error
+                Toast.makeText(MediaActivity.this, "We have an error", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+    }
+
+
+    public ArrayList<AudioFile> getAudioFiles() {
+        return mAudioFiles;
     }
 
 
