@@ -48,7 +48,7 @@ public class PaymentsActivity extends AppCompatActivity {
     EditText mOfferingField;
     @BindView(R.id.buildingField)
     EditText mBuildingField;
-    int itemCount=0;
+    int itemCount = 0;
     Integer totalAmount = 0;
 
 
@@ -60,73 +60,77 @@ public class PaymentsActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.amountLabel, R.id.amountField, R.id.paymentButton, R.id.titheCheckBox, R.id.offeringCheckBox, R.id.buildingCheckBox, R.id.otherCheckBox})
+    @OnClick({R.id.amountLabel, R.id.amountField, R.id.titheCheckBox, R.id.offeringCheckBox, R.id.buildingCheckBox, R.id.otherCheckBox})
     public void onViewClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
 
         switch (view.getId()) {
-            case R.id.paymentButton:
-                totalAmount = (Integer.parseInt(mTitheField.getText().toString()) + Integer.parseInt(mOfferingField.getText().toString()) + Integer.parseInt(mBuildingField.getText().toString()));
-                if (totalAmount.toString().equals(mAmountField.getText().toString())){
-                    Toast.makeText(getApplicationContext(), "Amounts equal", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Amounts do not equal", Toast.LENGTH_SHORT).show();
-                }
-                break;
             case R.id.titheCheckBox:
-                if (checked){
+                if (checked) {
                     itemCount++;
                     mTitheLabel.setVisibility(View.VISIBLE);
                     mTitheField.setVisibility(View.VISIBLE);
-                    if (itemCount==1){
-                        mTitheField.setText(mAmountField.getText());
-                        mTitheField.setEnabled(false);
+                    if (itemCount == 1) {
+                        if (!"".equals(mAmountField.getText().toString())) {
+                            mTitheField.setText(mAmountField.getText());
+                            mTitheField.setEnabled(false);
+                        }else{
+                            mTitheField.setEnabled(true);
+                        }
                     }
-                }else{
+                } else {
                     itemCount--;
                     mTitheLabel.setVisibility(View.GONE);
                     mTitheField.setVisibility(View.GONE);
-                    mTitheField.setEnabled(true);
+
                 }
                 break;
             case R.id.offeringCheckBox:
-                if (checked){
+                if (checked) {
                     itemCount++;
                     mOfferingLabel.setVisibility(View.VISIBLE);
                     mOfferingField.setVisibility(View.VISIBLE);
-                    if (itemCount==1){
-                        mOfferingField.setText(mAmountField.getText());
-                        mOfferingField.setEnabled(false);
+                    if (itemCount == 1) {
+                        if (!"".equals(mAmountField.getText().toString())) {
+                            mOfferingField.setText(mAmountField.getText().toString());
+                            mOfferingField.setEnabled(false);
+                        }else{
+                            mOfferingField.setEnabled(true);
+                        }
                     }
-                }else{
+                } else {
                     itemCount--;
                     mOfferingLabel.setVisibility(View.GONE);
                     mOfferingField.setVisibility(View.GONE);
-                    mOfferingField.setEnabled(true);
+
                 }
                 break;
             case R.id.buildingCheckBox:
-                if (checked){
+                if (checked) {
                     itemCount++;
                     mBuildingLabel.setVisibility(View.VISIBLE);
                     mBuildingField.setVisibility(View.VISIBLE);
-                    if (itemCount==1){
-                        mBuildingField.setText(mAmountField.getText());
-                        mBuildingField.setEnabled(false);
+                    if (itemCount == 1) {
+                        if (!"".equals(mAmountField.getText().toString())) {
+                            mBuildingField.setText(mAmountField.getText());
+                            mBuildingField.setEnabled(false);
+                        }else{
+                            mBuildingField.setEnabled(true);
+                        }
                     }
-                }else{
+                } else {
                     itemCount--;
                     mBuildingLabel.setVisibility(View.GONE);
                     mBuildingField.setVisibility(View.GONE);
-                    mBuildingField.setEnabled(true);
+
                 }
                 break;
             case R.id.otherCheckBox:
-                if (checked){
+                if (checked) {
                     itemCount++;
                     mOtherLabel.setVisibility(View.VISIBLE);
                     mOtherField.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     itemCount--;
                     mOtherLabel.setVisibility(View.GONE);
                     mOtherField.setVisibility(View.GONE);
@@ -134,5 +138,17 @@ public class PaymentsActivity extends AppCompatActivity {
                 break;
         }
 
+    }
+
+    @OnClick(R.id.paymentButton)
+    public void onPaymentClicked() {
+        if (totalAmount==0) {
+            Toast.makeText(PaymentsActivity.this, "Enter amount to make payment", Toast.LENGTH_SHORT).show();
+        }
+        if (!totalAmount.toString().equals(mAmountField.toString())){
+            Toast.makeText(PaymentsActivity.this, "Total amount does not equal individual amounts", Toast.LENGTH_SHORT).show();
+        }else{
+//            initiate phone api and callback method
+        }
     }
 }
