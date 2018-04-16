@@ -39,7 +39,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_weight=".25"
+            android:layout_weight=".35"
             android:src="@drawable/ic_library_video_white"
             />
 
@@ -48,7 +48,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_weight=".25"
+            android:layout_weight=".30"
             android:src="@drawable/ic_live_tv_white"
             />
 
@@ -57,17 +57,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_weight=".25"
+            android:layout_weight=".35"
             android:src="@drawable/ic_library_music_white"
-            />
-
-        <ImageView
-            android:id="@+id/imagesIcon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:layout_weight=".25"
-            android:src="@drawable/ic_photo_library_white"
             />
 
     </LinearLayout>

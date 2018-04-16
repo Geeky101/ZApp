@@ -95,12 +95,6 @@ public class AudioFileListAdapter extends RecyclerView.Adapter<AudioFileListAdap
                 titleLabel.setText(audioFile.getTitle());
             }
 
-            if (audioFile.getArtist().equals("<unknown>")) {
-                artistLabel.setText("");
-            } else {
-                artistLabel.setText(audioFile.getArtist());
-            }
-
 
             durationLabel.setText(audioFile.getTime());
 

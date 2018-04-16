@@ -42,8 +42,6 @@ public class MediaActivity extends AppCompatActivity implements VideoBrowserFrag
     ImageView mTvIcon;
     @BindView(R.id.musicIcon)
     ImageView mMusicIcon;
-    @BindView(R.id.imagesIcon)
-    ImageView mImagesIcon;
     @BindView(R.id.container)
     ConstraintLayout mContainer;
 
@@ -159,7 +157,33 @@ public class MediaActivity extends AppCompatActivity implements VideoBrowserFrag
             Response response = null;
             try {
                 response = client.newCall(request).execute();
+                String data = response.body().string();
+                JSONArray dataArray = new JSONArray(data);
+
+
+                for (int i = 0; i < dataArray.length(); i++) {
+                    JSONObject audioObject = dataArray.getJSONObject(i);
+
+                    String title = audioObject.getString("title");
+                    double duration = (double) (audioObject.getInt("duration") / 60);
+                    String thumbnailUrl = audioObject.getString("image_url");
+                    String streamUrl = audioObject.getString("stream_url");
+
+
+                    AudioFile audioFile = new AudioFile();
+                    audioFile.setTitle(title);
+                    audioFile.setTime(duration + "");
+                    audioFile.setThumbnailUrl(thumbnailUrl);
+                    audioFile.setStreamUrl(streamUrl);
+
+                    results.add(audioFile);
+
+                }
+
+
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
 
@@ -169,17 +193,19 @@ public class MediaActivity extends AppCompatActivity implements VideoBrowserFrag
 
         @Override
         protected void onPostExecute(ArrayList<AudioFile> audioFiles) {
-//            if (!audioFiles.isEmpty()) {
-//                mAudioFiles = audioFiles;
-//                mAudioBrowserFragment.setAllAudioFiles(mAudioFiles);
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, mAudioBrowserFragment).commit();
-//                Toast.makeText(MediaActivity.this, "Done", Toast.LENGTH_SHORT).show();
-//
-//            } else {
-//                //Todo : Data retrieval error
-//                Toast.makeText(MediaActivity.this, "We have an error", Toast.LENGTH_SHORT).show();
-//
-//            }
+            if (!audioFiles.isEmpty()) {
+                mAudioFiles = audioFiles;
+                mAudioBrowserFragment.setAllAudioFiles(mAudioFiles);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, mAudioBrowserFragment).commit();
+                Toast.makeText(MediaActivity.this, "Done", Toast.LENGTH_SHORT).show();
+
+            } else {
+                //Todo : Data retrieval error
+                Toast.makeText(MediaActivity.this, "We have an error", Toast.LENGTH_SHORT).show();
+
+            }
+
+
 
         }
     }
@@ -190,33 +216,28 @@ public class MediaActivity extends AppCompatActivity implements VideoBrowserFrag
     }
 
 
-    @OnClick(R.id.tvIcon)
-    public void onTvIconClicked() {
-        resetIcons();
-        mTvIcon.setImageResource(R.drawable.ic_live_tv_red);
-    }
-
     @OnClick(R.id.musicIcon)
     public void onMusicIconClicked() {
         resetIcons();
         mMusicIcon.setImageResource(R.drawable.ic_library_music_red);
-        AudioSearchTask as = new AudioSearchTask();
-        as.execute();
+
+        if (mAudioFiles.isEmpty()) {
+            AudioSearchTask audioSearchTask = new AudioSearchTask();
+            audioSearchTask.execute();
+        } else {
+
+            mAudioBrowserFragment.setAllAudioFiles(mAudioFiles);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, mAudioBrowserFragment).commit();
+        }
     }
 
-    @OnClick(R.id.imagesIcon)
-    public void onImagesIconClicked() {
-        resetIcons();
-        mImagesIcon.setImageResource(R.drawable.ic_photo_library_red);
 
-    }
 
 
     private void resetIcons() {
         mVideosIcon.setImageResource(R.drawable.ic_library_video_white);
         mTvIcon.setImageResource(R.drawable.ic_live_tv_white);
         mMusicIcon.setImageResource(R.drawable.ic_library_music_white);
-        mImagesIcon.setImageResource(R.drawable.ic_photo_library_white);
     }
 
 

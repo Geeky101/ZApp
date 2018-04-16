@@ -5,7 +5,6 @@ public class AudioFile {
     private String title ;
     private String streamUrl;
     private String thumbnailUrl;
-    private String artist;
     private String time;
 
 
@@ -33,13 +32,7 @@ public class AudioFile {
         this.thumbnailUrl = thumbnailUrl;
     }
 
-    public String getArtist() {
-        return artist;
-    }
 
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
 
     public String getTime() {
         return time;
