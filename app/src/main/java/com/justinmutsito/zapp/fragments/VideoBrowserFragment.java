@@ -1,8 +1,6 @@
 package com.justinmutsito.zapp.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,7 +26,6 @@ public class VideoBrowserFragment extends Fragment implements VideoListAdapter.V
     @BindView(R.id.videosListView)
     RecyclerView mVideosListView;
     Unbinder unbinder;
-    private OnFragmentInteractionListener mListener;
     private ArrayList<YoutubeVideo> mAllVideos;
     private VideoListAdapter mVideoListAdapter;
 
@@ -64,21 +61,12 @@ public class VideoBrowserFragment extends Fragment implements VideoListAdapter.V
         return view;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
+
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+
     }
 
     @Override
@@ -97,10 +85,6 @@ public class VideoBrowserFragment extends Fragment implements VideoListAdapter.V
         unbinder.unbind();
     }
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 
 
 

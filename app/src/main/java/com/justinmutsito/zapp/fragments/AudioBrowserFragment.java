@@ -1,7 +1,6 @@
 package com.justinmutsito.zapp.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,13 +20,12 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class AudioBrowserFragment extends Fragment {
+public class AudioBrowserFragment extends Fragment implements AudioFileListAdapter.Callback {
 
 
     @BindView(R.id.audioListView)
     RecyclerView mAudioListView;
     Unbinder unbinder;
-    private MusicBrowserCallback mListener;
 
     private ArrayList<AudioFile> mAllAudioFiles;
     private AudioFileListAdapter mAudioFileListAdapter;
@@ -53,6 +51,7 @@ public class AudioBrowserFragment extends Fragment {
         unbinder = ButterKnife.bind(this, view);
 
         mAudioFileListAdapter = new AudioFileListAdapter(mAllAudioFiles);
+        mAudioFileListAdapter.setCallback(this);
         mAudioListView.setAdapter(mAudioFileListAdapter);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -66,18 +65,12 @@ public class AudioBrowserFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof MusicBrowserCallback) {
-            mListener = (MusicBrowserCallback) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     @Override
@@ -86,8 +79,9 @@ public class AudioBrowserFragment extends Fragment {
         unbinder.unbind();
     }
 
-    public interface MusicBrowserCallback {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public void songOptions(int pos) {
+//play file
     }
+
 }

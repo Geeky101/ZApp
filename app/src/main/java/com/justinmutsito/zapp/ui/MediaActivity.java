@@ -34,7 +34,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MediaActivity extends AppCompatActivity implements VideoBrowserFragment.OnFragmentInteractionListener, AudioBrowserFragment.MusicBrowserCallback {
+public class MediaActivity extends AppCompatActivity{
 
     @BindView(R.id.videosIcon)
     ImageView mVideosIcon;
@@ -87,11 +87,6 @@ public class MediaActivity extends AppCompatActivity implements VideoBrowserFrag
             mVideoBrowserFragment.setVideos(mYoutubeVideosList);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, mVideoBrowserFragment).commit();
         }
-
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
     }
 
@@ -238,106 +233,6 @@ public class MediaActivity extends AppCompatActivity implements VideoBrowserFrag
         mVideosIcon.setImageResource(R.drawable.ic_library_video_white);
         mTvIcon.setImageResource(R.drawable.ic_live_tv_white);
         mMusicIcon.setImageResource(R.drawable.ic_library_music_white);
-    }
-
-
-    private ArrayList<YoutubeVideo> getYoutubeVideos() {
-        ArrayList<YoutubeVideo> videos = new ArrayList<>();
-
-
-        return videos;
-    }
-
-
-    public class TrendingNearTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            String mCountryCode = Locale.getDefault().getCountry();
-
-            HttpUrl.Builder urlBuilder = HttpUrl.parse("https://www.googleapis.com/youtube/v3/videos?").newBuilder();
-            urlBuilder.addQueryParameter("part", "snippet");
-            urlBuilder.addQueryParameter("chart", "mostPopular");
-            urlBuilder.addQueryParameter("ch", "mostPopular");
-            urlBuilder.addQueryParameter("regionCode", mCountryCode);
-            urlBuilder.addQueryParameter("maxResults", "50");
-            urlBuilder.addQueryParameter("order", "relevance");
-            urlBuilder.addQueryParameter("publishedAfter", "relevance");
-            urlBuilder.addQueryParameter("key", "" + Keys.YOUTUBE_DATA_API_KEY);
-            String url = urlBuilder.build().toString();
-
-            OkHttpClient client = new OkHttpClient();
-
-
-            Request request = new Request.Builder()
-                    .url(url)
-                    .build();
-
-            Response response = null;
-            try {
-                response = client.newCall(request).execute();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            if (response != null) {
-                try {
-                    String data = response.body().string();
-                    JSONObject dataObject = new JSONObject(data);
-                    JSONArray itemsArray = dataObject.getJSONArray("items");
-
-                    for (int i = 0; i < itemsArray.length(); i++) {
-                        JSONObject videoObject = itemsArray.getJSONObject(i);
-
-                        JSONObject snippetObject = videoObject.getJSONObject("snippet");
-                        String id = videoObject.getString("id");
-                        String title = snippetObject.getString("title");
-                        String categoryId = snippetObject.getString("categoryId");
-
-                        JSONObject thumbnailObject = snippetObject.getJSONObject("thumbnails");
-                        JSONObject mediumThumbnailObject = thumbnailObject.getJSONObject("medium");
-                        String thumbnailUrl = mediumThumbnailObject.getString("url");
-
-
-                        YoutubeVideo youtubeVideo = new YoutubeVideo();
-                        youtubeVideo.setId(id);
-                        youtubeVideo.setTitle(title);
-                        youtubeVideo.setThumbnailUrl(thumbnailUrl);
-
-                        mYoutubeVideosList = new ArrayList<>();
-                        mYoutubeVideosList.add(youtubeVideo);
-
-
-                    }
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            if (!mYoutubeVideosList.isEmpty()) {
-                Toast.makeText(MediaActivity.this, "size is " + mYoutubeVideosList.size(), Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(MediaActivity.this, "size is zero zero zero", Toast.LENGTH_SHORT).show();
-            }
-
-        }
     }
 
 }
