@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -143,22 +144,57 @@ public class MediaActivity extends AppCompatActivity implements VideoBrowserFrag
         @Override
         protected ArrayList<AudioFile> doInBackground(String... strings) {
             ArrayList<AudioFile> results = getAudioFiles();
+            String requestUrl = "https://api.fanburst.com/users/ykqeow/tracks";
+            OkHttpClient client = new OkHttpClient();
+
+            HttpUrl.Builder httpBuider = HttpUrl.parse(requestUrl).newBuilder();
+            httpBuider.addQueryParameter("client_id", Keys.FANBURST_API_KEY);
+            httpBuider.addQueryParameter("client_secret", Keys.FANBURST_SECRET);
+            httpBuider.addQueryParameter("redirect_uri", Keys.FANBURST_CALLBACK);
+            httpBuider.addQueryParameter("site", Keys.FANBURST_SITE);
+            httpBuider.addQueryParameter("access_token", Keys.FANBURST_TOKEN);
+
+
+            Request request = new Request.Builder().url(httpBuider.build()).build();
+
+            Response response = null;
+            try {
+                response = client.newCall(request).execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (response.isSuccessful()) {
+                try {
+                    Log.i("FANBURST", "have" + response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    Log.i("FANBURST", "have error error error " + response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
             return results;
         }
 
         @Override
         protected void onPostExecute(ArrayList<AudioFile> audioFiles) {
-            if (!audioFiles.isEmpty()) {
-                mAudioFiles = audioFiles;
-                mAudioBrowserFragment.setAllAudioFiles(mAudioFiles);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, mAudioBrowserFragment).commit();
-                Toast.makeText(MediaActivity.this, "Done", Toast.LENGTH_SHORT).show();
-
-            } else {
-                //Todo : Data retrieval error
-                Toast.makeText(MediaActivity.this, "We have an error", Toast.LENGTH_SHORT).show();
-
-            }
+//            if (!audioFiles.isEmpty()) {
+//                mAudioFiles = audioFiles;
+//                mAudioBrowserFragment.setAllAudioFiles(mAudioFiles);
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, mAudioBrowserFragment).commit();
+//                Toast.makeText(MediaActivity.this, "Done", Toast.LENGTH_SHORT).show();
+//
+//            } else {
+//                //Todo : Data retrieval error
+//                Toast.makeText(MediaActivity.this, "We have an error", Toast.LENGTH_SHORT).show();
+//
+//            }
 
         }
     }
@@ -179,6 +215,8 @@ public class MediaActivity extends AppCompatActivity implements VideoBrowserFrag
     public void onMusicIconClicked() {
         resetIcons();
         mMusicIcon.setImageResource(R.drawable.ic_library_music_red);
+        AudioSearchTask as = new AudioSearchTask();
+        as.execute();
     }
 
     @OnClick(R.id.imagesIcon)
