@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -162,20 +161,6 @@ public class MediaActivity extends AppCompatActivity implements VideoBrowserFrag
                 response = client.newCall(request).execute();
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-
-            if (response.isSuccessful()) {
-                try {
-                    Log.i("FANBURST", "have" + response.body().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                try {
-                    Log.i("FANBURST", "have error error error " + response.body().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
 
 
