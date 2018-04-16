@@ -84,6 +84,8 @@ public class PaymentsActivity extends AppCompatActivity {
                     }
                 }else{
                     itemCount--;
+                    mTitheLabel.setVisibility(View.GONE);
+                    mTitheField.setVisibility(View.GONE);
                     mTitheField.setEnabled(true);
                 }
                 break;
@@ -98,6 +100,8 @@ public class PaymentsActivity extends AppCompatActivity {
                     }
                 }else{
                     itemCount--;
+                    mOfferingLabel.setVisibility(View.GONE);
+                    mOfferingField.setVisibility(View.GONE);
                     mOfferingField.setEnabled(true);
                 }
                 break;
@@ -112,6 +116,8 @@ public class PaymentsActivity extends AppCompatActivity {
                     }
                 }else{
                     itemCount--;
+                    mBuildingLabel.setVisibility(View.GONE);
+                    mBuildingField.setVisibility(View.GONE);
                     mBuildingField.setEnabled(true);
                 }
                 break;
@@ -122,6 +128,8 @@ public class PaymentsActivity extends AppCompatActivity {
                     mOtherField.setVisibility(View.VISIBLE);
                 }else{
                     itemCount--;
+                    mOtherLabel.setVisibility(View.GONE);
+                    mOtherField.setVisibility(View.GONE);
                 }
                 break;
         }
