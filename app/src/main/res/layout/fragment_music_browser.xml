@@ -12,9 +12,79 @@
         android:layout_height="0dp"
         android:layout_marginEnd="3dp"
         android:layout_marginStart="3dp"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <RelativeLayout
+        android:layout_margin="1dp"
+    app:layout_constraintTop_toBottomOf="@+id/audioListView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/albumArt"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="3dp"
+            app:civ_border_color="@color/textColorPrimary"
+            app:civ_border_width="2dp"
+            />
+
+        <TextView
+            android:id="@+id/titleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/albumArt"
+            android:padding="1dp"
+            android:text="Like a champion"
+            android:textColor="#ffffff"
+            android:textSize="16sp"/>
+
+
+        <TextView
+            android:id="@+id/artistLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleLabel"
+            android:layout_toEndOf="@+id/albumArt"
+            android:padding="1dp"
+            android:text="Danger twins"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="16sp"/>
+
+        <ImageView
+            android:id="@+id/playIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="3dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/ic_play_circle_red"
+            />
+
+        <TextView
+            android:id="@+id/durationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="8dp"
+            android:layout_toLeftOf="@+id/playIcon"
+            android:padding="1dp"
+            android:text="3:12"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="14sp"/>
+
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
