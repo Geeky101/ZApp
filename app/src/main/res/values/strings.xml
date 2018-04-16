@@ -29,4 +29,21 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--payments view strings-->
+    <string name="payments_totalLabel">Amount</string>
+    <string name="payments_totalFieldHint">Enter Total Amount</string>
+    <string name="payments_TitheCheckbox">Tithe</string>
+    <string name="payments_OfferingCheckbox">Offering</string>
+    <string name="payments_BuildingCheckbox">Building</string>
+    <string name="payments_OtherCheckbox">Other</string>
+    <string name="payments_TitheLabel">Tithe</string>
+    <string name="payments_OfferingLabel">Offering</string>
+    <string name="payments_BuildingLabel">Building</string>
+    <string name="payments_OtherLabel">Other</string>
+    <string name="payments_MakePaymentButton">Make Payment</string>
+    <string name="payments_TitheFieldHint">Enter amount to assign for Tithe</string>
+    <string name="payments_OfferingFieldHint">Enter amount to assign for Offering</string>
+    <string name="payments_BuildingFieldHint">Enter amount to assign for Building projects</string>
+    <string name="payments_OtherFieldHint">Enter the amount and purpose breakdown</string>
 </resources>
