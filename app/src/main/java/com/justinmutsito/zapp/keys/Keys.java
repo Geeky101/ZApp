@@ -9,4 +9,5 @@ public class Keys {
     public static final String FANBURST_CALLBACK = "urn:ietf:wg:oauth:2.0:oob";
     public static final String FANBURST_TOKEN = "e005f10457e8ec5e6f960354eb355a01f5ffb18c27eb00525bab4cf13ff0440f";
     public static final String FANBURST_SITE = "https://fanburst.com";
+    public static final String FANBURST_USER_ID = "ykqeow";
 }

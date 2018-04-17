@@ -43,7 +43,7 @@ public class YoutubeSearch {
             mQuery.setKey(Keys.YOUTUBE_DATA_API_KEY);
             mQuery.setType("video");
             mQuery.setOrder("date");
-            mQuery.setChannelId("UCAamxU_Z3ckda15EM0umSpw");
+            mQuery.setChannelId(Keys.YOUTUBE_CHANNEL_ID);
             mQuery.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
             mQuery.setFields("items(id/videoId,snippet/title,snippet/description,snippet/thumbnails/default/url)");
         } catch (IOException e) {

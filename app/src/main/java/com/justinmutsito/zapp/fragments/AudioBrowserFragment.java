@@ -94,7 +94,5 @@ public class AudioBrowserFragment extends Fragment implements AudioFileListAdapt
 
     public interface AudioCallback {
         void playAudio(int pos);
-
-        void pauseAudio(int pos);
-    }
+        }
 }

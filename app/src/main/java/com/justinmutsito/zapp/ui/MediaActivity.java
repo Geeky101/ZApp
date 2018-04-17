@@ -8,7 +8,6 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
@@ -29,10 +28,8 @@ import com.justinmutsito.zapp.util.YoutubeSearch;
 import com.justinmutsito.zapp.util.YoutubeVideo;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -96,7 +93,6 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
 
     @OnClick(R.id.videosIcon)
     public void onVideosIconClicked() {
-
         resetIcons();
         mVideosIcon.setImageResource(R.drawable.ic_library_video_red);
 
@@ -117,7 +113,7 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(MediaActivity.this, "Started", Toast.LENGTH_SHORT).show();
+            //LOADING ANIMATION
         }
 
         @Override
@@ -133,11 +129,9 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
                 mYoutubeVideosList = videos;
                 mVideoBrowserFragment.setVideos(mYoutubeVideosList);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, mVideoBrowserFragment).commit();
-                Toast.makeText(MediaActivity.this, "Done", Toast.LENGTH_SHORT).show();
 
             } else {
                 //Todo : Data retrieval error
-                Toast.makeText(MediaActivity.this, "We have an error", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -150,24 +144,24 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(MediaActivity.this, "Started audio", Toast.LENGTH_SHORT).show();
+            //Loading Animation
         }
 
         @Override
         protected ArrayList<AudioFile> doInBackground(String... strings) {
             ArrayList<AudioFile> results = getAudioFiles();
-            String requestUrl = "https://api.fanburst.com/users/ykqeow/tracks";
+            String requestUrl = "https://api.fanburst.com/users/" + Keys.FANBURST_USER_ID + "/tracks";
             OkHttpClient client = new OkHttpClient();
 
-            HttpUrl.Builder httpBuider = HttpUrl.parse(requestUrl).newBuilder();
-            httpBuider.addQueryParameter("client_id", Keys.FANBURST_API_KEY);
-            httpBuider.addQueryParameter("client_secret", Keys.FANBURST_SECRET);
-            httpBuider.addQueryParameter("redirect_uri", Keys.FANBURST_CALLBACK);
-            httpBuider.addQueryParameter("site", Keys.FANBURST_SITE);
-            httpBuider.addQueryParameter("access_token", Keys.FANBURST_TOKEN);
+            HttpUrl.Builder httpBuilder = HttpUrl.parse(requestUrl).newBuilder();
+            httpBuilder.addQueryParameter("client_id", Keys.FANBURST_API_KEY);
+            httpBuilder.addQueryParameter("client_secret", Keys.FANBURST_SECRET);
+            httpBuilder.addQueryParameter("redirect_uri", Keys.FANBURST_CALLBACK);
+            httpBuilder.addQueryParameter("site", Keys.FANBURST_SITE);
+            httpBuilder.addQueryParameter("access_token", Keys.FANBURST_TOKEN);
 
 
-            Request request = new Request.Builder().url(httpBuider.build()).build();
+            Request request = new Request.Builder().url(httpBuilder.build()).build();
 
             Response response = null;
             try {
@@ -207,10 +201,9 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
                 }
 
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
+                //Do nothing
             }
 
 
@@ -223,11 +216,9 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
                 mAudioFiles = audioFiles;
                 mAudioBrowserFragment.setAllAudioFiles(mAudioFiles);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, mAudioBrowserFragment).commit();
-                Toast.makeText(MediaActivity.this, "Done", Toast.LENGTH_SHORT).show();
 
             } else {
                 //Todo : Data retrieval error
-                Toast.makeText(MediaActivity.this, "We have an error", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -295,6 +286,7 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
 
         mPlayer.setPlayWhenReady(mPlayWhenReady);
         mPlayer.seekTo(mCurrentWindow, mPlaybackPosition);
+
     }
 
     private MediaSource buildMediaSource(Uri uri) {
@@ -332,10 +324,6 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
         mExoplayer.setVisibility(View.VISIBLE);
     }
 
-    @Override
-    public void pauseAudio(int pos) {
-
-    }
 
     @Override
     public void onPause() {
