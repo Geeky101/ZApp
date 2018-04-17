@@ -28,20 +28,11 @@
         android:layout_toEndOf="@+id/albumArt"
         android:padding="1dp"
         android:text="Like a champion"
+        android:layout_centerVertical="true"
         android:textColor="#ffffff"
         android:textSize="16sp"/>
 
 
-    <TextView
-        android:id="@+id/artistLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/titleLabel"
-        android:layout_toEndOf="@+id/albumArt"
-        android:padding="1dp"
-        android:text="Danger twins"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="16sp"/>
 
     <ImageView
         android:id="@+id/playIcon"
@@ -60,7 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginTop="8dp"
-        android:layout_toLeftOf="@+id/playIcon"
+        android:layout_toStartOf="@+id/playIcon"
+        android:layout_marginRight="6dp"
         android:padding="1dp"
         android:text="3:12"
         android:textColor="@color/textColorSecondary"

@@ -29,6 +29,7 @@ public class AudioBrowserFragment extends Fragment implements AudioFileListAdapt
 
     private ArrayList<AudioFile> mAllAudioFiles;
     private AudioFileListAdapter mAudioFileListAdapter;
+    private AudioCallback mCallback;
 
 
     public AudioBrowserFragment() {
@@ -65,13 +66,20 @@ public class AudioBrowserFragment extends Fragment implements AudioFileListAdapt
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
+        if (context instanceof AudioCallback) {
+            mCallback = (AudioCallback) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+        mCallback = null;
     }
+
 
     @Override
     public void onDestroyView() {
@@ -81,7 +89,12 @@ public class AudioBrowserFragment extends Fragment implements AudioFileListAdapt
 
     @Override
     public void songOptions(int pos) {
-//play file
+        mCallback.playAudio(pos);
     }
 
+    public interface AudioCallback {
+        void playAudio(int pos);
+
+        void pauseAudio(int pos);
+    }
 }

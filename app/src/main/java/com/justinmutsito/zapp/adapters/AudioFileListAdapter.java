@@ -54,14 +54,13 @@ public class AudioFileListAdapter extends RecyclerView.Adapter<AudioFileListAdap
     }
 
     public class SongViewHolder extends RecyclerView.ViewHolder {
-        public TextView artistLabel, titleLabel, durationLabel;
+        public TextView  titleLabel, durationLabel;
         public CircleImageView albumArt;
         public ImageView playIcon;
 
         public SongViewHolder(View itemView) {
             super(itemView);
 
-            artistLabel = itemView.findViewById(R.id.artistLabel);
             titleLabel = itemView.findViewById(R.id.titleLabel);
             durationLabel = itemView.findViewById(R.id.durationLabel);
             albumArt = itemView.findViewById(R.id.albumArt);
