@@ -10,4 +10,5 @@ public class Keys {
     public static final String FANBURST_TOKEN = "e005f10457e8ec5e6f960354eb355a01f5ffb18c27eb00525bab4cf13ff0440f";
     public static final String FANBURST_SITE = "https://fanburst.com";
     public static final String FANBURST_USER_ID = "ykqeow";
+    public static final String  TV_STREAM_API = "https://livestream.com/accounts/19491040/events/6866917";
 }

@@ -232,6 +232,13 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
     }
 
 
+    @OnClick(R.id.tvIcon)
+    public void onTvIconClicked() {
+
+
+
+    }
+
     @OnClick(R.id.musicIcon)
     public void onMusicIconClicked() {
         resetIcons();
@@ -315,9 +322,7 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
         httpBuider.addQueryParameter("redirect_uri", Keys.FANBURST_CALLBACK);
         httpBuider.addQueryParameter("site", Keys.FANBURST_SITE);
         httpBuider.addQueryParameter("access_token", Keys.FANBURST_TOKEN);
-
         String url = httpBuider.toString();
-
         Uri uri = Uri.parse(url);
         MediaSource mediaSource = buildMediaSource(uri);
         mPlayer.prepare(mediaSource, true, false);
