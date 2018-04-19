@@ -1,6 +1,7 @@
 package com.justinmutsito.zapp.ui;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -234,7 +235,7 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
 
     @OnClick(R.id.tvIcon)
     public void onTvIconClicked() {
-
+        startActivity(new Intent(MediaActivity.this, TvStreamActivity.class));
 
 
     }

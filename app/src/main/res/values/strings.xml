@@ -46,4 +46,5 @@
     <string name="payments_OfferingFieldHint">Enter amount to assign for Offering</string>
     <string name="payments_BuildingFieldHint">Enter amount to assign for Building projects</string>
     <string name="payments_OtherFieldHint">Enter the amount and purpose breakdown</string>
+    <string name="title_activity_tv_stream">TvStreamActivity</string>
 </resources>
