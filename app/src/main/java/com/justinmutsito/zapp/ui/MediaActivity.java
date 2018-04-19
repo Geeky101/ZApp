@@ -9,16 +9,28 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
+import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.PlaybackParameters;
+import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.Timeline;
+import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
+import com.google.android.exoplayer2.extractor.ExtractorsFactory;
+import com.google.android.exoplayer2.source.DynamicConcatenatingMediaSource;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
+import com.google.android.exoplayer2.upstream.DataSource;
+import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.justinmutsito.zapp.R;
 import com.justinmutsito.zapp.fragments.AudioBrowserFragment;
@@ -63,6 +75,8 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
     private boolean mPlayWhenReady;
     private int mCurrentWindow;
     private long mPlaybackPosition;
+    private int mAudioFilePos;
+    private com.google.android.exoplayer2.Player.EventListener mPlayerListener;
 
 
     @Override
@@ -267,6 +281,64 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
         mAudioFiles = new ArrayList<>();
         mVideoBrowserFragment = new VideoBrowserFragment();
         mAudioBrowserFragment = new AudioBrowserFragment();
+        mPlayerListener = new Player.EventListener() {
+            @Override
+            public void onTimelineChanged(Timeline timeline, Object manifest, int reason) {
+
+            }
+
+            @Override
+            public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
+
+            }
+
+            @Override
+            public void onLoadingChanged(boolean isLoading) {
+
+            }
+
+            @Override
+            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+                if (playbackState == Player.STATE_ENDED) {
+                    mAudioFilePos++;
+                    playAudio(mAudioFilePos);
+                }
+
+                if(playbackState == Player.STATE_BUFFERING){
+                    //Todo : display loading icon
+                }
+            }
+
+            @Override
+            public void onRepeatModeChanged(int repeatMode) {
+
+            }
+
+            @Override
+            public void onShuffleModeEnabledChanged(boolean shuffleModeEnabled) {
+
+            }
+
+            @Override
+            public void onPlayerError(ExoPlaybackException error) {
+
+            }
+
+            @Override
+            public void onPositionDiscontinuity(int reason) {
+
+            }
+
+            @Override
+            public void onPlaybackParametersChanged(PlaybackParameters playbackParameters) {
+
+            }
+
+            @Override
+            public void onSeekProcessed() {
+
+            }
+        };
         initializePlayer();
     }
 
@@ -285,22 +357,17 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
         mPlayWhenReady = true;
         mCurrentWindow = 0;
         mPlaybackPosition = 0;
+        mAudioFilePos = 0;
 
         mPlayer = ExoPlayerFactory.newSimpleInstance(
                 new DefaultRenderersFactory(this),
                 new DefaultTrackSelector(), new DefaultLoadControl());
 
-        mExoplayer.setPlayer(mPlayer);
-
         mPlayer.setPlayWhenReady(mPlayWhenReady);
         mPlayer.seekTo(mCurrentWindow, mPlaybackPosition);
+        mPlayer.addListener(mPlayerListener);
+        mExoplayer.setPlayer(mPlayer);
 
-    }
-
-    private MediaSource buildMediaSource(Uri uri) {
-        return new ExtractorMediaSource.Factory(
-                new DefaultHttpDataSourceFactory("exoplayer-codelab")).
-                createMediaSource(uri);
     }
 
     private void releasePlayer() {
@@ -315,19 +382,40 @@ public class MediaActivity extends AppCompatActivity implements AudioBrowserFrag
 
     @Override
     public void playAudio(int pos) {
-        String requestUrl = mAudioFiles.get(pos).getStreamUrl();
-
-        HttpUrl.Builder httpBuider = HttpUrl.parse(requestUrl).newBuilder();
-        httpBuider.addQueryParameter("client_id", Keys.FANBURST_API_KEY);
-        httpBuider.addQueryParameter("client_secret", Keys.FANBURST_SECRET);
-        httpBuider.addQueryParameter("redirect_uri", Keys.FANBURST_CALLBACK);
-        httpBuider.addQueryParameter("site", Keys.FANBURST_SITE);
-        httpBuider.addQueryParameter("access_token", Keys.FANBURST_TOKEN);
-        String url = httpBuider.toString();
-        Uri uri = Uri.parse(url);
-        MediaSource mediaSource = buildMediaSource(uri);
+        mAudioFilePos = pos;
+        MediaSource mediaSource = buildMediaSource(pos);
         mPlayer.prepare(mediaSource, true, false);
         mExoplayer.setVisibility(View.VISIBLE);
+
+
+    }
+
+    public View getViewByPosition(int pos, ListView listView) {
+        final int firstListItemPosition = listView.getFirstVisiblePosition();
+        final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
+
+        if (pos < firstListItemPosition || pos > lastListItemPosition) {
+            return listView.getAdapter().getView(pos, null, listView);
+        } else {
+            final int childIndex = pos - firstListItemPosition;
+            return listView.getChildAt(childIndex);
+        }
+    }
+
+    private MediaSource buildMediaSource(int pos) {
+        DynamicConcatenatingMediaSource concatenatingMediaSource = new DynamicConcatenatingMediaSource();
+        DefaultBandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
+        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(this, getString(R.string.app_name)), bandwidthMeter);
+        ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
+
+
+        for (int i = pos; i < mAudioFiles.size(); i++) {
+            Uri uri = Uri.parse(mAudioFiles.get(i).getStreamUrl());
+            MediaSource file = new ExtractorMediaSource(uri, dataSourceFactory, extractorsFactory, null, null);
+            concatenatingMediaSource.addMediaSource(file);
+        }
+
+        return concatenatingMediaSource;
     }
 
 

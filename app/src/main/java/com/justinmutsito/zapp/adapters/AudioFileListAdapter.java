@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.justinmutsito.zapp.R;
@@ -23,7 +22,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class AudioFileListAdapter extends RecyclerView.Adapter<AudioFileListAdapter.SongViewHolder> {
 
     private ArrayList<AudioFile> mSongsList;
-    private Callback mCallback;
     private Context mContext;
 
     public AudioFileListAdapter(ArrayList<AudioFile> songsList) {
@@ -31,9 +29,6 @@ public class AudioFileListAdapter extends RecyclerView.Adapter<AudioFileListAdap
     }
 
 
-    public void setCallback(Callback callback) {
-        mCallback = callback;
-    }
 
     @Override
     public SongViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -56,7 +51,7 @@ public class AudioFileListAdapter extends RecyclerView.Adapter<AudioFileListAdap
     public class SongViewHolder extends RecyclerView.ViewHolder {
         public TextView  titleLabel, durationLabel;
         public CircleImageView albumArt;
-        public ImageView playIcon;
+
 
         public SongViewHolder(View itemView) {
             super(itemView);
@@ -64,25 +59,7 @@ public class AudioFileListAdapter extends RecyclerView.Adapter<AudioFileListAdap
             titleLabel = itemView.findViewById(R.id.titleLabel);
             durationLabel = itemView.findViewById(R.id.durationLabel);
             albumArt = itemView.findViewById(R.id.albumArt);
-            playIcon = itemView.findViewById(R.id.playIcon);
 
-            durationLabel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mCallback != null) {
-                        mCallback.songOptions(getAdapterPosition());
-                    }
-                }
-            });
-
-            playIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mCallback != null) {
-                        mCallback.songOptions(getAdapterPosition());
-                    }
-                }
-            });
         }
 
 
@@ -110,8 +87,6 @@ public class AudioFileListAdapter extends RecyclerView.Adapter<AudioFileListAdap
 
     }
 
-    public interface Callback {
-        void songOptions(int pos);
-    }
+
 
 }

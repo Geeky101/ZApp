@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="9dp"
     tools:background="@color/colorAccent"
-    android:layout_margin="1dp"
     >
 
 
@@ -24,37 +24,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="8dp"
         android:layout_toEndOf="@+id/albumArt"
         android:padding="1dp"
         android:text="Like a champion"
-        android:layout_centerVertical="true"
         android:textColor="#ffffff"
         android:textSize="16sp"/>
 
-
-
-    <ImageView
-        android:id="@+id/playIcon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="3dp"
-        android:layout_marginTop="3dp"
-        android:src="@drawable/ic_play_circle_red"
-        />
 
     <TextView
         android:id="@+id/durationLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="8dp"
-        android:layout_toStartOf="@+id/playIcon"
-        android:layout_marginRight="6dp"
         android:padding="1dp"
         android:text="3:12"
+        android:layout_marginEnd="16dp"
         android:textColor="@color/textColorSecondary"
         android:textSize="14sp"/>
 

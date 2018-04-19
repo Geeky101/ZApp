@@ -15,25 +15,26 @@
         android:id="@+id/fragmentContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="50dp"
         android:padding="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvIcon"
+        app:layout_constraintBottom_toTopOf="@+id/exoplayer"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
 
         />
 
     <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:id="@+id/exoplayer"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
+        android:background="#ffffff"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fragmentContainer"
         />
 
 
@@ -42,10 +43,11 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="9dp"
         android:src="@drawable/ic_library_video_white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/tvIcon"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
     <ImageView
@@ -53,11 +55,12 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
+        android:layout_marginTop="9dp"
         android:layout_weight=".30"
         android:src="@drawable/ic_live_tv_white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/videosIcon"
         app:layout_constraintRight_toLeftOf="@+id/musicIcon"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
     <ImageView
@@ -65,12 +68,12 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="9dp"
         android:layout_weight=".35"
         android:src="@drawable/ic_library_music_white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/tvIcon"
+        app:layout_constraintTop_toTopOf="parent"
         />
-
 
 </android.support.constraint.ConstraintLayout>

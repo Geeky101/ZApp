@@ -3,6 +3,8 @@ package com.justinmutsito.zapp.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import com.justinmutsito.zapp.R;
 import com.justinmutsito.zapp.adapters.AudioFileListAdapter;
 import com.justinmutsito.zapp.util.AudioFile;
+import com.justinmutsito.zapp.util.ItemClickSupport;
 
 import java.util.ArrayList;
 
@@ -20,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class AudioBrowserFragment extends Fragment implements AudioFileListAdapter.Callback {
+public class AudioBrowserFragment extends Fragment {
 
 
     @BindView(R.id.audioListView)
@@ -48,13 +51,22 @@ public class AudioBrowserFragment extends Fragment implements AudioFileListAdapt
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_music_browser, container, false);
+        final View view = inflater.inflate(R.layout.fragment_music_browser, container, false);
         unbinder = ButterKnife.bind(this, view);
 
         mAudioFileListAdapter = new AudioFileListAdapter(mAllAudioFiles);
-        mAudioFileListAdapter.setCallback(this);
         mAudioListView.setAdapter(mAudioFileListAdapter);
 
+
+        ItemClickSupport.addTo(mAudioListView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                mCallback.playAudio(position);
+            }
+        });
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.listview_divider));
+        mAudioListView.addItemDecoration(itemDecorator);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mAudioListView.setLayoutManager(layoutManager);
         mAudioListView.setHasFixedSize(true);
@@ -87,12 +99,8 @@ public class AudioBrowserFragment extends Fragment implements AudioFileListAdapt
         unbinder.unbind();
     }
 
-    @Override
-    public void songOptions(int pos) {
-        mCallback.playAudio(pos);
-    }
 
     public interface AudioCallback {
         void playAudio(int pos);
-        }
+    }
 }
