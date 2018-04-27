@@ -1,6 +1,5 @@
 package com.justinmutsito.zapp.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -14,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.justinmutsito.zapp.R;
 
 import butterknife.BindView;
@@ -96,8 +96,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.settings) {
             startActivity(new Intent(this, SettingsActivity.class));
-        } else {
+        } else if (item.getItemId() == R.id.about){
             startActivity(new Intent(this, AboutActivity.class));
+        }
+        else {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(MainActivity.this, SplashActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         }
 
         return true;

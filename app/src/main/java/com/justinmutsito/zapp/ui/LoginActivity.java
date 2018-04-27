@@ -47,8 +47,8 @@ public class LoginActivity extends AppCompatActivity {
     @OnClick(R.id.loginLayout)
     public void onLoginLayoutClicked() {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        String email = mEmailField.getText().toString();
-        String password = mPasswordField.getText().toString();
+        String email = mEmailField.getText().toString().trim();
+        String password = mPasswordField.getText().toString().trim();
 
         boolean validEmail = Verify.checkEmail(email);
         boolean validPassword = Verify.checkPassword(password);
@@ -83,8 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void goToMain() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 

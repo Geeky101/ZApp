@@ -97,6 +97,7 @@
         app:layout_constraintTop_toBottomOf="@+id/surnameField"
         android:textColor="@color/textColorPrimary"
         android:textColorHint="@color/textColorSecondary"
+        android:inputType="textEmailAddress"
         />
 
     <android.support.v7.widget.AppCompatEditText
@@ -112,6 +113,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailField"
         android:textColor="@color/textColorPrimary"
         android:textColorHint="@color/textColorSecondary"
+        android:inputType="textPassword"
         />
 
     <LinearLayout

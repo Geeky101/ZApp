@@ -17,19 +17,17 @@ public class Verify {
             return false;
         } else {
             char c;
-            int count = 0;
             for (int i = 0; i < password.length(); i++) {
                 c = password.charAt(i);
                 if (!Character.isLetterOrDigit(c)) {
                     return false;
-                } else if (Character.isDigit(c)) {
-                    count++;
                 }
-            }
-            if (count < 2) {
-                return false;
             }
         }
         return true;
+    }
+
+    public static boolean checkUsername(String name, String surname) {
+        return name.length() >= 3 && surname.length() >= 3;
     }
 }

@@ -28,10 +28,9 @@ public class SplashActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     //Intentionally left blank
                 } finally {
-                    if (isConnected()){
+                    if (isConnected()) {
                         isUserLoggedIn();
-                    }
-                    else {
+                    } else {
                         //Todo : Network error
                     }
 
@@ -50,15 +49,13 @@ public class SplashActivity extends AppCompatActivity {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        if (user!=null) {
+        if (user != null) {
             Intent intent = new Intent(this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         } else {
             Intent intent = new Intent(this, LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
     }
