@@ -17,6 +17,10 @@ android {
         }
     }
     buildToolsVersion '27.0.3'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -36,11 +40,9 @@ dependencies {
     implementation('com.google.api-client:google-api-client-android:1.23.0') {
         exclude group: 'org.apache.httpcomponents'
     }
-
     implementation('com.google.apis:google-api-services-youtube:v3-rev188-1.23.0') {
         exclude group: 'org.apache.httpcomponents'
     }
-
     testImplementation 'com.squareup.okhttp3:mockwebserver:3.10.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'de.hdodenhof:circleimageview:2.1.0'

@@ -48,4 +48,19 @@
     <string name="payments_OtherFieldHint">Enter the amount and purpose breakdown</string>
     <string name="title_activity_tv_stream">TvStreamActivity</string>
     <string name="sign_out">Sign Out</string>
+    <string name="payment_total_amount">Amount</string>
+    <string name="payment_checkbox_tithe">Tithe</string>
+    <string name="payment_checkbox_offering">Thanks Offering</string>
+    <string name="payment_checkbox_building">Building</string>
+    <string name="payment_checkbox_other">Other</string>
+    <string name="payment_label_tithe">Tithe</string>
+    <string name="payment_label_offering">Thanks Offering</string>
+    <string name="payment_label_building">Building</string>
+    <string name="payment_label_other">Other</string>
+    <string name="payment_button_make_payment">Make Payment</string>
+    <string name="payment_tithe_hint">Offering</string>
+    <string name="payment_offering_hint">Offering</string>
+    <string name="payment_building_hint">Offering</string>
+    <string name="payment_other_hint">Offering</string>
+    <string name="payment_amount_hint"></string>
 </resources>

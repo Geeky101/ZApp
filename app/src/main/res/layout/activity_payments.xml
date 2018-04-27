@@ -5,192 +5,202 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PaymentsActivity">
+    >
 
 
     <TextView
-        android:id="@+id/amountLabel"
+        android:id="@+id/textView"
         android:layout_width="63dp"
         android:layout_height="29dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/payments_totalLabel"
+        android:layout_marginTop="24dp"
+        android:text="@string/payment_total_amount"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/amountField"
+        android:id="@+id/txtAmount"
         android:layout_width="235dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="@string/payments_totalFieldHint"
-        android:inputType="number"
-        android:singleLine="true"
-        app:layout_constraintStart_toEndOf="@+id/amountLabel"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <Button
-        android:id="@+id/paymentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:text="@string/payments_MakePaymentButton"
+        android:ems="10"
+        android:hint="@string/payment_amount_hint"
+        android:inputType="number"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.851"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onButtonClick"
+        android:text="@string/payment_button_make_payment"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otherField"/>
+        app:layout_constraintTop_toBottomOf="@+id/txtOther" />
 
     <CheckBox
-        android:id="@+id/titheCheckBox"
+        android:id="@+id/checkboxTithe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:onClick="onViewClicked"
-        android:text="@string/payments_TitheCheckbox"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="selectItem"
+        android:text="@string/payment_checkbox_tithe"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amountField"/>
+        app:layout_constraintTop_toBottomOf="@+id/txtAmount" />
 
     <CheckBox
-        android:id="@+id/offeringCheckBox"
+        android:id="@+id/checkboxOffering"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:onClick="onViewClicked"
-        android:text="@string/payments_OfferingCheckbox"
-        app:layout_constraintStart_toEndOf="@+id/titheCheckBox"
-        app:layout_constraintTop_toBottomOf="@+id/amountField"/>
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:onClick="selectItem"
+        android:text="@string/payment_checkbox_offering"
+        app:layout_constraintStart_toEndOf="@+id/checkboxTithe"
+        app:layout_constraintTop_toBottomOf="@+id/txtAmount" />
 
     <CheckBox
-        android:id="@+id/buildingCheckBox"
+        android:id="@+id/checkboxBuilding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:onClick="onViewClicked"
-        android:text="@string/payments_BuildingCheckbox"
-        app:layout_constraintStart_toEndOf="@+id/offeringCheckBox"
-        app:layout_constraintTop_toBottomOf="@+id/amountField"/>
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:onClick="selectItem"
+        android:text="@string/payment_checkbox_building"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.771"
+        app:layout_constraintStart_toEndOf="@+id/checkboxOffering"
+        app:layout_constraintTop_toBottomOf="@+id/txtAmount" />
 
     <CheckBox
-        android:id="@+id/otherCheckBox"
+        android:id="@+id/checkboxOther"
         android:layout_width="73dp"
         android:layout_height="26dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:onClick="onViewClicked"
-        android:text="@string/payments_OtherCheckbox"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="selectItem"
+        android:text="@string/payment_checkbox_other"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titheCheckBox"/>
+        app:layout_constraintTop_toBottomOf="@+id/checkboxTithe" />
 
     <EditText
-        android:id="@+id/otherField"
-        android:layout_width="231dp"
+        android:id="@+id/txtOther"
+        android:layout_width="wrap_content"
         android:layout_height="88dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="@string/payments_OtherFieldHint"
+        android:hint="@string/payment_other_hint"
         android:inputType="textMultiLine"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
-        app:layout_constraintStart_toEndOf="@+id/otherLabel"
-        app:layout_constraintTop_toBottomOf="@+id/buildingField"/>
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toEndOf="@+id/labelOther"
+        app:layout_constraintTop_toBottomOf="@+id/txtBuilding" />
 
     <TextView
-        android:id="@+id/titheLabel"
+        android:id="@+id/labelTithe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/payments_TitheLabel"
+        android:layout_marginTop="52dp"
+        android:text="@string/payment_label_tithe"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otherCheckBox"/>
+        app:layout_constraintTop_toBottomOf="@+id/checkboxOther" />
 
     <EditText
-        android:id="@+id/titheField"
-        android:layout_width="235dp"
+        android:id="@+id/txtTithe"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
-        android:hint="@string/payments_TitheFieldHint"
+        android:hint="@string/payment_tithe_hint"
         android:inputType="number"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.884"
-        app:layout_constraintStart_toEndOf="@+id/titheLabel"
-        app:layout_constraintTop_toBottomOf="@+id/otherCheckBox"/>
+        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintStart_toEndOf="@+id/labelTithe"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxOther" />
 
     <TextView
-        android:id="@+id/offeringLabel"
+        android:id="@+id/labelOffering"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/payments_OfferingLabel"
+        android:layout_marginTop="48dp"
+        android:text="@string/payment_label_offering"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titheLabel"/>
+        app:layout_constraintTop_toBottomOf="@+id/labelTithe" />
 
     <TextView
-        android:id="@+id/buildingLabel"
+        android:id="@+id/labelBuilding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/payments_BuildingLabel"
+        android:layout_marginTop="56dp"
+        android:text="@string/payment_label_building"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/offeringLabel"/>
+        app:layout_constraintTop_toBottomOf="@+id/labelOffering" />
 
     <TextView
-        android:id="@+id/otherLabel"
+        android:id="@+id/labelOther"
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="88dp"
-        android:text="@string/payments_OtherLabel"
+        android:layout_marginTop="76dp"
+        android:text="@string/payment_label_other"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buildingLabel"/>
+        app:layout_constraintTop_toBottomOf="@+id/labelBuilding" />
 
     <EditText
-        android:id="@+id/offeringField"
-        android:layout_width="233dp"
+        android:id="@+id/txtOffering"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="@string/payments_OfferingFieldHint"
+        android:hint="@string/payment_offering_hint"
         android:inputType="number"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.843"
-        app:layout_constraintStart_toEndOf="@+id/offeringLabel"
-        app:layout_constraintTop_toBottomOf="@+id/titheField"/>
+        app:layout_constraintHorizontal_bias="0.783"
+        app:layout_constraintStart_toEndOf="@+id/labelOffering"
+        app:layout_constraintTop_toBottomOf="@+id/txtTithe" />
 
     <EditText
-        android:id="@+id/buildingField"
-        android:layout_width="231dp"
+        android:id="@+id/txtBuilding"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="@string/payments_BuildingFieldHint"
+        android:hint="@string/payment_building_hint"
         android:inputType="number"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.857"
-        app:layout_constraintStart_toEndOf="@+id/buildingLabel"
-        app:layout_constraintTop_toBottomOf="@+id/offeringField"/>
+        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintStart_toEndOf="@+id/labelBuilding"
+        app:layout_constraintTop_toBottomOf="@+id/txtOffering" />
 </android.support.constraint.ConstraintLayout>

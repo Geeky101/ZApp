@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "908332990198",
+    "firebase_url": "https://zaoga1-54c73.firebaseio.com",
+    "project_id": "zaoga1-54c73",
+    "storage_bucket": "zaoga1-54c73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908332990198:android:36db49c16b2fc50e",
+        "android_client_info": {
+          "package_name": "com.justinmutsito.zapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908332990198-3vkcl81hln13dvu4oonq61t9fqnt3omj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.justinmutsito.zapp",
+            "certificate_hash": "8f194617ba5cddd80f007ed4ca0f1e3a1d7109f2"
+          }
+        },
+        {
+          "client_id": "908332990198-ebmqhlr9k2bnbdhprfj60naoj540c98e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRK_S6cLHvXEN8BWZdt05XEHXAjph__8w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908332990198-ebmqhlr9k2bnbdhprfj60naoj540c98e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
