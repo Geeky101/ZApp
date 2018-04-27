@@ -59,5 +59,19 @@ public class SignUpActivity extends AppCompatActivity {
             // create new user
         }
 
+//        auth.createUserWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            goToSignIn();
+//                        } else {
+//                            Toast.makeText(SignUpActivity.this, task.getException() + " ???",
+//                                    Toast.LENGTH_SHORT).show();
+//                            //Todo : alert  server error
+//
+//                        }
+//                    }
+//                });
     }
 }

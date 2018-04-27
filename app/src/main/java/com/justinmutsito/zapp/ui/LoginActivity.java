@@ -14,9 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.justinmutsito.zapp.R;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.justinmutsito.zapp.util.Verify;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,15 +33,12 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.signUpLabel)
     TextView mSignUpLabel;
 
-    private FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        mAuth = FirebaseAuth.getInstance();
 
 
     }
@@ -51,15 +46,15 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.loginLayout)
     public void onLoginLayoutClicked() {
-
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         String email = mEmailField.getText().toString();
         String password = mPasswordField.getText().toString();
 
-        boolean validEmail = checkEmail(email);
-        boolean validPassword = checkPassword(password);
+        boolean validEmail = Verify.checkEmail(email);
+        boolean validPassword = Verify.checkPassword(password);
 
         if (validEmail && validPassword) {
-            mAuth.signInWithEmailAndPassword(email, password)
+            firebaseAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -85,34 +80,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private boolean checkEmail(String email) {
-        Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
-        Matcher mat = pattern.matcher(email);
-
-        return mat.matches();
-
-    }
-
-    private boolean checkPassword(String password) {
-        if (password.length() < 8) {
-            return false;
-        } else {
-            char c;
-            int count = 0;
-            for (int i = 0; i < password.length(); i++) {
-                c = password.charAt(i);
-                if (!Character.isLetterOrDigit(c)) {
-                    return false;
-                } else if (Character.isDigit(c)) {
-                    count++;
-                }
-            }
-            if (count < 2) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     private void goToMain() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -121,8 +88,8 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @OnClick({R.id.signUpLabel,R.id.noAccountLabel})
-    public void onsignUpClicked() {
-        startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
+    @OnClick({R.id.signUpLabel, R.id.noAccountLabel})
+    public void onSignUpClicked() {
+        startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
     }
 }
