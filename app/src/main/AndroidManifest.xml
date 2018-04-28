@@ -74,7 +74,7 @@
             android:enabled="true"
             android:exported="true"/>
 
-        <activity android:name=".ui.ProfileActivity">
+        <activity android:name=".ui.UserProfileActivity">
         </activity>
     </application>
 

@@ -76,7 +76,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 String userName = name + " " + surname;
                                 Preferences preferences = new Preferences(SignUpActivity.this);
                                 preferences.setUsername(userName);
-                                goToMain();
+                                goToUserProfile();
                             } else {
                                 Toast.makeText(SignUpActivity.this, "Oops something went wrong, check your email and password", Toast.LENGTH_SHORT).show();
                                 //Todo : alert  server error
@@ -101,8 +101,8 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
-    private void goToMain() {
-        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+    private void goToUserProfile() {
+        Intent intent = new Intent(SignUpActivity.this, UserProfileActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
