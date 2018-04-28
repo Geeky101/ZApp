@@ -28,7 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="MyReceiver">
+        <activity android:name=".MyReceiver">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
             </intent-filter>
@@ -69,11 +69,13 @@
             android:label="@string/title_activity_tv_stream"
             android:theme="@style/AppTheme"/>
 
-
         <receiver
             android:name=".ui.MyReceiver"
             android:enabled="true"
             android:exported="true"/>
+
+        <activity android:name=".ui.ProfileActivity">
+        </activity>
     </application>
 
 </manifest>
