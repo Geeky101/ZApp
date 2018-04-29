@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.emailField)
     AppCompatEditText mEmailField;
-    @BindView(R.id.passwordField)
+    @BindView(R.id.statusField)
     AppCompatEditText mPasswordField;
     @BindView(R.id.loginLayout)
     LinearLayout mLoginLayout;

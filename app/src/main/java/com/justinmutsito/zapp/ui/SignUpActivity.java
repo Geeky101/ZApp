@@ -36,7 +36,7 @@ public class SignUpActivity extends AppCompatActivity {
     AppCompatEditText mSurnameField;
     @BindView(R.id.emailField)
     AppCompatEditText mEmailField;
-    @BindView(R.id.passwordField)
+    @BindView(R.id.statusField)
     AppCompatEditText mPasswordField;
     @BindView(R.id.signUpLayout)
     LinearLayout mSignUpLayout;
@@ -76,6 +76,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 String userName = name + " " + surname;
                                 Preferences preferences = new Preferences(SignUpActivity.this);
                                 preferences.setUsername(userName);
+                                preferences.setPassword(password);
                                 goToUserProfile();
                             } else {
                                 Toast.makeText(SignUpActivity.this, "Oops something went wrong, check your email and password", Toast.LENGTH_SHORT).show();

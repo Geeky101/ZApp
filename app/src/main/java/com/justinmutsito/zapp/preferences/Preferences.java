@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 
 public class Preferences {
     private static final String USERNAME = "USERNAME";
+    private static final String PASSWORD = "PASSWORD";
     private Context mContext;
 
     public Preferences(Context context) {
@@ -28,6 +29,18 @@ public class Preferences {
 
     }
 
+    public void setPassword(String password) {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences(PASSWORD, 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("password", password);
+        editor.apply();
+    }
+
+    public String getPassword() {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences(PASSWORD, 0);
+        return sharedPreferences.getString("password", "password");
+
+    }
 
 
 }
