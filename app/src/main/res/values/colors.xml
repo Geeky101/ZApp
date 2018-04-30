@@ -6,4 +6,10 @@
     <color name="textColorPrimary">#ffffff</color>
     <color name="textColorSecondary">#252525</color>
     <color name="colorTransparent">#00FFFFFF</color>
+    <color name="primaryBlueLight">#6ec6ff</color>
+    <color name="colorPrimaryBlue">#2196f3</color>
+    <color name="colorPrimaryBlueDark">#003399</color>
+    <color name="colorAccentBlue">#0099CC</color>
+    <color name="transparentWhite">#20ffFFFF</color>
+    <color name="transparentBlue">#60003399</color>
 </resources>

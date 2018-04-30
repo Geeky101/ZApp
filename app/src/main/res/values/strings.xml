@@ -63,4 +63,5 @@
     <string name="payment_building_hint">Offering</string>
     <string name="payment_other_hint">Offering</string>
     <string name="payment_amount_hint"></string>
+    <string name="no_events_this_month">No events this month.</string>
 </resources>

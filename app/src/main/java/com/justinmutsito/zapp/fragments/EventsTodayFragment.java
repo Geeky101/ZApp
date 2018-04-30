@@ -37,6 +37,7 @@ public class EventsTodayFragment extends Fragment {
     @BindView(R.id.eventsListView)
     ListView mEventsListView;
     Unbinder unbinder;
+
     private EventsTodayCallback mCallback;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mEventsReference;
