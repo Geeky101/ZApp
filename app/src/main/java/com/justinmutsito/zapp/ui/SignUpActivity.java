@@ -25,8 +25,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static java.lang.Integer.valueOf;
-
 public class SignUpActivity extends AppCompatActivity {
 
     @BindView(R.id.backIcon)
@@ -45,36 +43,14 @@ public class SignUpActivity extends AppCompatActivity {
     AppCompatEditText mPasswordField;
     @BindView(R.id.signUpLayout)
     LinearLayout mSignUpLayout;
-
-    EditText mNumberField = (EditText) findViewById(R.id.numberField);
+    @BindView(R.id.numberField)
+    EditText mNumberField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_activity);
         ButterKnife.bind(this);
-
-        mNumberField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String test = mNumberField.getText().toString();
-                if (test.length()>=4){
-                    mNumberField.setText(s);
-                }else {
-                    mNumberField.setText("+263");
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
     }
 
@@ -130,8 +106,6 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(this, "Enter a valid telephone number", Toast.LENGTH_SHORT).show();
             }
         }
-
-
     }
 
 

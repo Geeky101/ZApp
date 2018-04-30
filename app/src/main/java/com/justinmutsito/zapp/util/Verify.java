@@ -32,7 +32,20 @@ public class Verify {
     }
 
     public static boolean checkPhone (String phone){
+        boolean result = false;
+        if (phone.length()>=12){
+            result=true;
+        }
+        return result;
+    }
 
-        return true;
+    public static boolean checkTransID (String transactionID){
+        boolean result = false;
+        Pattern pattern = Pattern.compile("[A-Z]+[0-9]{2,4}");
+        Matcher mat = pattern.matcher(transactionID);
+        if (transactionID.length()!=6 && mat.matches()){
+            result = true;
+        }
+        return result;
     }
 }

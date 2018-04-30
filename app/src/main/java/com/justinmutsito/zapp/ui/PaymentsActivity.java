@@ -10,46 +10,76 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.justinmutsito.zapp.R;
+import com.justinmutsito.zapp.objects.Payment;
+import com.justinmutsito.zapp.preferences.Preferences;
+import com.justinmutsito.zapp.util.Verify;
+
+import static java.lang.Float.valueOf;
 
 public class PaymentsActivity extends AppCompatActivity {
     Intent callIntent;
     private static final int REQUEST_CALL= 1;
+    private static boolean state = false;
+    Payment payment;
+    EditText txtTithe, txtOffering, txtBuilding, txtOther, txtID;
+    TextView vTithe, vOffering, vBuilding, vOther, vID, vManual;
+    Button btnPay;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payments);
 
+        vTithe = findViewById(R.id.labelTithe);
+        txtTithe = findViewById(R.id.txtTithe);
+        vOffering= findViewById(R.id.labelOffering);
+        txtOffering =  findViewById(R.id.txtOffering);
+        vBuilding =  findViewById(R.id.labelBuilding);
+        txtBuilding = findViewById(R.id.txtBuilding);
+        vOther = findViewById(R.id.labelOther);
+        txtOther = findViewById(R.id.txtOther);
+        vID = findViewById(R.id.labelTransactionID);
+        txtID = findViewById(R.id.IDField);
+        vManual =findViewById(R.id.labelManualCapture);
+        btnPay = findViewById(R.id.btnPayment);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null){
-
+            payment = new Payment();
+            payment.amount =  valueOf(extras.getString("Amount"));
+            payment.sender = extras.getString("Phone");
+            payment.tdatetime = extras.getString("date");
+            payment.ID = extras.getString("ID");
+            Toast.makeText(this,"Paid: " + payment.amount + " TransactionID: " + payment.ID, Toast.LENGTH_SHORT).show();
         }
+
+        btnPay.setOnClickListener((v) ->{
+            final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+            if (state){
+                payment.ID = txtID.getText().toString();
+            }
+            if (Verify.checkTransID(payment.ID)){
+//                save payment object to firebase
+//                firebaseAuth
+            }
+        });
     }
 
 
     public void onButtonClick(View view){
         int totalAmount = 0;
-        StringBuffer sb = new StringBuffer("You have successfully paid USD49.80 to GMB Head Office (94092) Merchant. Txn ID MP180425.0925.D07123. New wallet balance is USD120.25.");
-        //Check if message contains Merchant Code
-        if (sb.toString().contains("94092")){
-            //Get amount paid
-            int posAmountStart = sb.indexOf("paid");
-            int posAmountEnd = sb.indexOf(" to ");
-            String amountPaid = sb.substring(posAmountStart, posAmountEnd);
-            Toast.makeText(this, "Amount Paid: " + amountPaid, Toast.LENGTH_SHORT).show();
 
-            //Get Transaction ID
-            int posTxnStart = sb.indexOf("Txn ID") + 21;
-            int posTxnEnd = posTxnStart + 6;
-            String TxnID = sb.substring(posTxnStart, posTxnEnd);
-            Toast.makeText(this, "Txn ID: " + TxnID, Toast.LENGTH_SHORT).show();
-        }
     }
 
     protected void makePayment(){
@@ -75,18 +105,6 @@ public class PaymentsActivity extends AppCompatActivity {
     }
 
     public void selectItem(View view){
-        EditText txtTithe, txtOffering, txtBuilding, txtOther;
-        TextView vTithe, vOffering, vBuilding, vOther;
-
-        txtTithe = findViewById(R.id.txtTithe);
-        txtOffering =  findViewById(R.id.txtOffering);
-        txtBuilding = findViewById(R.id.txtBuilding);
-        txtOther = findViewById(R.id.txtOther);
-
-        vTithe = findViewById(R.id.labelTithe);
-        vOffering= findViewById(R.id.labelOffering);
-        vBuilding =  findViewById(R.id.labelBuilding);
-        vOther = findViewById(R.id.labelOther);
 
         boolean checked = ((CheckBox) view).isChecked();
         switch (view.getId()){
@@ -129,6 +147,24 @@ public class PaymentsActivity extends AppCompatActivity {
                     vOther.setVisibility(View.GONE);
                 }
                 break;
+
+            case R.id.labelManualCapture:
+                String labelTitle = vManual.getText().toString();
+                switch (labelTitle){
+                    case "Manual Capture":
+                        vID.setVisibility(View.VISIBLE);
+                        txtID.setVisibility(View.VISIBLE);
+                        vManual.setText(R.string.payment_manual_hide);
+                        state= true;
+                        break;
+
+                    case "Use Automatic":
+                        vID.setVisibility(View.GONE);
+                        txtID.setVisibility(View.GONE);
+                        vManual.setText(R.string.payment_manual);
+                        state = false;
+                        break;
+                }
 
         }
     }

@@ -10,7 +10,7 @@ import android.content.SharedPreferences;
 public class Preferences {
     private static final String USERNAME = "USERNAME";
     private static final String PHONE = "0772908098";
-    private Context mContext;
+    private  Context mContext;
 
     public Preferences(Context context) {
         mContext = context;

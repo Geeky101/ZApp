@@ -127,6 +127,8 @@
         android:hint="+263"
         android:inputType="phone"
         android:paddingStart="50dp"
+        android:paddingEnd="10dp"
+        android:text="+263"
         android:textAlignment="textStart"
         android:textColor="@color/textColorPrimary"
         android:textColorHint="@color/textColorSecondary"

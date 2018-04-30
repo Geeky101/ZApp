@@ -32,6 +32,7 @@
 
     <!--payments view strings-->
     <string name="payments_totalLabel">Amount</string>
+    <string name="payments_total_amount_hint"> </string>
     <string name="payments_totalFieldHint">Enter Total Amount</string>
     <string name="payments_TitheCheckbox">Tithe</string>
     <string name="payments_OfferingCheckbox">Offering</string>
@@ -62,5 +63,8 @@
     <string name="payment_offering_hint">Offering</string>
     <string name="payment_building_hint">Offering</string>
     <string name="payment_other_hint">Offering</string>
-    <string name="payment_amount_hint"></string>
+    <string name="payment_manual">Manual Capture</string>
+    <string name="payment_manual_ID">Transaction ID</string>
+    <string name="payment_manual_hint">Transaction ID \'D...\'</string>
+    <string name="payment_manual_hide">Use Automatic Capture</string>
 </resources>
