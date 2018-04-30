@@ -26,10 +26,14 @@ public class PaymentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payments);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null){
+
+        }
     }
 
 
-    public void onButtonClick(View view_){
+    public void onButtonClick(View view){
         int totalAmount = 0;
         StringBuffer sb = new StringBuffer("You have successfully paid USD49.80 to GMB Head Office (94092) Merchant. Txn ID MP180425.0925.D07123. New wallet balance is USD120.25.");
         //Check if message contains Merchant Code
@@ -46,10 +50,6 @@ public class PaymentsActivity extends AppCompatActivity {
             String TxnID = sb.substring(posTxnStart, posTxnEnd);
             Toast.makeText(this, "Txn ID: " + TxnID, Toast.LENGTH_SHORT).show();
         }
-
-
-
-
     }
 
     protected void makePayment(){

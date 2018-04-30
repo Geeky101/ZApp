@@ -30,4 +30,9 @@ public class Verify {
     public static boolean checkUsername(String name, String surname) {
         return name.length() >= 3 && surname.length() >= 3;
     }
+
+    public static boolean checkPhone (String phone){
+
+        return true;
+    }
 }

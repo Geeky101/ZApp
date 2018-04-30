@@ -28,11 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="MyReceiver">
-            <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
-            </intent-filter>
-        </activity>
         <activity
             android:name=".ui.LoginActivity"
             android:screenOrientation="portrait"/>
@@ -71,9 +66,13 @@
 
 
         <receiver
-            android:name=".ui.MyReceiver"
+            android:name=".receivers.MyReceiver"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

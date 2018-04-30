@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,6 +24,8 @@ import com.justinmutsito.zapp.util.Verify;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static java.lang.Integer.valueOf;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -41,13 +46,38 @@ public class SignUpActivity extends AppCompatActivity {
     @BindView(R.id.signUpLayout)
     LinearLayout mSignUpLayout;
 
+    EditText mNumberField = (EditText) findViewById(R.id.numberField);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_activity);
         ButterKnife.bind(this);
 
+        mNumberField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String test = mNumberField.getText().toString();
+                if (test.length()>=4){
+                    mNumberField.setText(s);
+                }else {
+                    mNumberField.setText("+263");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
     }
+
 
     @OnClick(R.id.backIcon)
     public void onBackIconClicked() {
@@ -61,13 +91,15 @@ public class SignUpActivity extends AppCompatActivity {
         final String surname = mSurnameField.getText().toString();
         String email = mEmailField.getText().toString().trim();
         String password = mPasswordField.getText().toString().trim();
+        String phoneNumber = mNumberField.getText().toString().trim();
 
         boolean validEmail = Verify.checkEmail(email);
         boolean validPassword = Verify.checkPassword(password);
         boolean validUsername = Verify.checkUsername(name,surname);
+        boolean validPhone = Verify.checkPhone(phoneNumber);
 
 
-        if (validEmail && validPassword && validUsername) {
+        if (validEmail && validPassword && validUsername && validPhone) {
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -93,6 +125,9 @@ public class SignUpActivity extends AppCompatActivity {
             }
             if (!validUsername) {
                 Toast.makeText(this, "Enter a valid name and surname", Toast.LENGTH_SHORT).show();
+            }
+            if (!validPhone){
+                Toast.makeText(this, "Enter a valid telephone number", Toast.LENGTH_SHORT).show();
             }
         }
 

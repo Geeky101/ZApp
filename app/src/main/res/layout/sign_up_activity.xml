@@ -116,6 +116,25 @@
         android:inputType="textPassword"
         />
 
+    <EditText
+        android:id="@+id/numberField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="+263"
+        android:inputType="phone"
+        android:paddingStart="50dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/textColorPrimary"
+        android:textColorHint="@color/textColorSecondary"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordField" />
+
     <LinearLayout
         android:id="@+id/signUpLayout"
         android:layout_width="match_parent"
@@ -126,16 +145,18 @@
         app:layout_constraintRight_toRightOf="parent"
         >
 
-        <TextView
+        <android.support.v7.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Create Account"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:padding="6dp"
             android:textAlignment="center"
             android:textColor="@color/textColorPrimary"
             />
 
     </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
