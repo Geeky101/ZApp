@@ -6,7 +6,6 @@
     <string name="about">about</string>
     <string name="upcoming_events">Upcoming Events</string>
     <string name="media">Media</string>
-    <string name="groups">Groups</string>
     <string name="payments">Payments</string>
     <string name="info">Info</string>
 
@@ -65,4 +64,5 @@
     <string name="payment_amount_hint"></string>
     <string name="no_events_this_month">No events this month.</string>
     <string name="no_event_today">No events today</string>
+    <string name="groups">Groups</string>
 </resources>

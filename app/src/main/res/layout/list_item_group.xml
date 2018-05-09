@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="9dp"
+    tools:background="@color/colorAccent"
+    >
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/groupAvatar"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="3dp"
+        app:civ_border_color="@color/textColorPrimary"
+        app:civ_border_width="2dp"
+        />
+
+    <TextView
+        android:id="@+id/groupLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/groupAvatar"
+        android:padding="1dp"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        tools:text="Like a champion"/>
+
+
+
+    <TextView
+        android:id="@+id/unreadLabel"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_button_clear_gradient"
+        android:padding="1dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="15sp"
+        tools:text="15"/>
+
+
+</RelativeLayout>
