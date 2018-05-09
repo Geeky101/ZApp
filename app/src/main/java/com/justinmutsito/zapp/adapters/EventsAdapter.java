@@ -49,9 +49,11 @@ public class EventsAdapter extends BaseAdapter {
             holder.eventDetails = convertView.findViewById(R.id.detailsLabel);
             holder.eventTime = convertView.findViewById(R.id.timeLabel);
             holder.eventLocation = convertView.findViewById(R.id.locationLabel);
+            convertView.setTag(holder);
 
         } else {
             holder = (ViewHolder) convertView.getTag();
+
         }
 
 

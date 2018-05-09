@@ -3,7 +3,7 @@ package com.justinmutsito.zapp.util;
 public class Event {
     private String details;
     private String location;
-    private int startHour,startMinute,endHour,endMinute;
+    private int startHour, startMinute, endHour, endMinute;
     private int day;
     private String month;
 
@@ -83,7 +83,23 @@ public class Event {
         return month;
     }
 
+    public int getMonthIndex() {
+        return TimeFormatter.formatMonth(getMonth());
+    }
+
     public void setMonth(String month) {
         this.month = month;
+    }
+
+
+    public String getStartTime(){
+        return TimeFormatter.formatTime(getStartHour(),getStartMinute());
+    }
+    public String getFinishTime(){
+        return TimeFormatter.formatTime(getEndHour(),getEndMinute());
+    }
+
+    public String getDate(){
+        return TimeFormatter.formatDate(getDay(),getMonthIndex());
     }
 }

@@ -30,8 +30,8 @@ import butterknife.Unbinder;
 
 public class EventsTodayFragment extends Fragment {
 
-    @BindView(R.id.dayLabel)
-    TextView mDayLabel;
+    @BindView(R.id.dayLabel) TextView mDayLabel;
+    @BindView(R.id.emptyLabel) TextView mEmptyLabel;
     @BindView(R.id.dateLabel)
     TextView mDateLabel;
     @BindView(R.id.eventsListView)
@@ -89,6 +89,11 @@ public class EventsTodayFragment extends Fragment {
                     mTodayEventsList.add(event);
                     mEventsAdapter.notifyDataSetChanged();
                 }
+
+                if (mTodayEventsList.isEmpty()){
+                    mEmptyLabel.setVisibility(View.VISIBLE);
+                }
+
             }
 
             @Override

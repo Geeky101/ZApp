@@ -22,7 +22,7 @@ public class EventsActivity extends AppCompatActivity implements EventsTodayFrag
 
     @BindView(R.id.backIcon)
     ImageView mBackIcon;
-    @BindView(R.id.settingsIcon)
+    @BindView(R.id.moreIcon)
     ImageView mSettingsIcon;
     @BindView(R.id.fragmentContainer)
     RelativeLayout mFragmentContainer;
@@ -54,7 +54,7 @@ public class EventsActivity extends AppCompatActivity implements EventsTodayFrag
         onBackPressed();
     }
 
-    @OnClick(R.id.settingsIcon)
+    @OnClick(R.id.moreIcon)
     public void onSettingsIconClicked() {
         showOptions().show();
     }

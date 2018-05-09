@@ -39,8 +39,6 @@ public class Preferences {
     public String getPassword() {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(PASSWORD, 0);
         return sharedPreferences.getString("password", "password");
-
     }
-
 
 }

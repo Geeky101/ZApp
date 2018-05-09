@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="6dp"
+    android:layout_height="wrap_content"
+    tools:context="com.justinmutsito.zapp.ui.SplashActivity"
+    android:background="@drawable/bg_blue_gradient"
+    >
+
+
+    <TextView
+        android:id="@+id/dayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:padding="3dp"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="12 May "
+        android:textColor="@color/textColorPrimary"
+        />
+
+
+    <TextView
+        android:id="@+id/detailsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:padding="3dp"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dayLabel"
+        tools:text="Meet other members and  donate money for the construction of the new church wing."
+        />
+
+
+    <TextView
+        android:id="@+id/locationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:padding="3dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsLabel"
+        tools:text="Church"
+        />
+
+    <TextView
+        android:id="@+id/startTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:padding="3dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationLabel"
+        app:layout_constraintRight_toLeftOf="@+id/locationLabel"
+        tools:text="Starts : 9:00 AM "
+
+        android:layout_margin="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"        />
+
+    <TextView
+        android:id="@+id/finishTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:padding="3dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textColor="@color/textColorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/locationLabel"
+        app:layout_constraintLeft_toRightOf="@+id/locationLabel"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="Ends : 02:0 PM "
+        android:layout_margin="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</android.support.constraint.ConstraintLayout>
