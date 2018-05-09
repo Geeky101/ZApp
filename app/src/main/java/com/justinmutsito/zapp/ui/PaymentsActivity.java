@@ -33,6 +33,9 @@ public class PaymentsActivity extends AppCompatActivity {
     TextView vTithe, vOffering, vBuilding, vOther, vID, vManual;
     Button btnPay;
 
+    //Firebase declarations
+
+
 
 
 
