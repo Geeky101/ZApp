@@ -6,15 +6,14 @@
     <string name="about">about</string>
     <string name="upcoming_events">Upcoming Events</string>
     <string name="media">Media</string>
-    <string name="groups">Groups</string>
     <string name="payments">Payments</string>
     <string name="info">Info</string>
 
     <!--sign up strings-->
     <string name="sign_up_email">enter email here</string>
     <string name="sign_up_name">enter your name here</string>
-    <string name="sign_up_password1">enter password here</string>
-    <string name="sign_up_password2">retype your password</string>
+    <string name="sign_up_password1">enter status here</string>
+    <string name="sign_up_password2">retype your status</string>
     <string name="sign_up_button_text">Create Account</string>
     <string name="sign_up_account_exist">Already have an account</string>
 
@@ -32,7 +31,6 @@
 
     <!--payments view strings-->
     <string name="payments_totalLabel">Amount</string>
-    <string name="payments_total_amount_hint"> </string>
     <string name="payments_totalFieldHint">Enter Total Amount</string>
     <string name="payments_TitheCheckbox">Tithe</string>
     <string name="payments_OfferingCheckbox">Offering</string>
@@ -63,8 +61,8 @@
     <string name="payment_offering_hint">Offering</string>
     <string name="payment_building_hint">Offering</string>
     <string name="payment_other_hint">Offering</string>
-    <string name="payment_manual">Manual Capture</string>
-    <string name="payment_manual_ID">Transaction ID</string>
-    <string name="payment_manual_hint">Transaction ID \'D...\'</string>
-    <string name="payment_manual_hide">Use Automatic Capture</string>
+    <string name="payment_amount_hint"></string>
+    <string name="no_events_this_month">No events this month.</string>
+    <string name="no_event_today">No events today</string>
+    <string name="groups">Groups</string>
 </resources>

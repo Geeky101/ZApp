@@ -28,6 +28,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".MyReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.LoginActivity"
             android:screenOrientation="portrait"/>
@@ -64,15 +69,13 @@
             android:label="@string/title_activity_tv_stream"
             android:theme="@style/AppTheme"/>
 
-
         <receiver
-            android:name=".receivers.MyReceiver"
+            android:name=".ui.MyReceiver"
             android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
-            </intent-filter>
-        </receiver>
+            android:exported="true"/>
+
+        <activity android:name=".ui.UserProfileActivity">
+        </activity>
     </application>
 
 </manifest>
